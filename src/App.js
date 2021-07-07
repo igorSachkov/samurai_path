@@ -1,18 +1,13 @@
-
 import './App.css'
-import Header from "./my-app/Header.jsx";
-import Nav from "./my-app/Nav.jsx";
-import Content from "./my-app/Content.jsx";
-
+import Header from "./Content/Header/Header"
 
 function App() {
   return (
     <div className="wrapper">
-        <Header />
-        <Nav />
-        <Content />
+      <Header></Header>
     </div>
   );
 }
 
 export default App;
+

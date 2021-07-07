@@ -1,0 +1,11 @@
+.background {
+    background: url("../../Images/profile-background.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    height: 200px;
+    width: 100%;
+}
+.profile__card {
+    display: flex;
+}

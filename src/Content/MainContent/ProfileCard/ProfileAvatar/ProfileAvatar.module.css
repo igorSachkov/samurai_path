@@ -1,0 +1,9 @@
+.ava {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: white 4px solid;
+    /* position: absolute; */
+    transform: translateY(-50px);
+}

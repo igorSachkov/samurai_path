@@ -1,10 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
 
 .logo {
-    max-width: 30px;
+    max-width: 40px;
     vertical-align: middle;
+    margin-right: 12px;
 }
 .logo__text {
     font-size: 36px;
     font-family: 'Festive', cursive;
+}
+.logo__text i {
+    color: red;
+}
+.logo__text__small {
+    font-size: 36px;
+    font-family: 'Festive', cursive;
+    display: none;
+    color: red;
+    text-shadow: 5px 3px 4px black;
+}
+@media (max-width: 576px) {
+    .logo__text {
+        display: none;
+    }
+    .logo__text__small {
+        display: inline;
+    }
 }

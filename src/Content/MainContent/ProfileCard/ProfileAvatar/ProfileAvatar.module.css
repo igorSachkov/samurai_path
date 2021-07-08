@@ -7,3 +7,6 @@
     /* position: absolute; */
     transform: translateY(-50px);
 }
+.wrapper__ava {
+    margin: 0px 10px;
+}

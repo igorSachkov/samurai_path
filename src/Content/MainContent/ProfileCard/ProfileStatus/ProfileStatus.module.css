@@ -1,0 +1,7 @@
+.profile {
+    border: 1px solid grey;
+    border-radius: 15px;
+    text-align: center;
+    margin: 5px;
+    background-color: rgba(220, 220, 220, 0.5);
+}

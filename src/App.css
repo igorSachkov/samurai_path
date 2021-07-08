@@ -12,3 +12,20 @@ li {
   background-image: url("/src/Content/Images/background.jpg");
   background-position: center;
 }
+.main-container {
+  padding-top: 72px;  
+}
+@media (min-width: 992px) {
+  .main-container {
+      margin-left: 250px;
+  }
+  .mobile-footer {
+    display: none;
+  }
+}
+.mobile-footer {
+  position: fixed;
+  height: 40px;
+  width: 100%;
+  bottom: 0;
+}

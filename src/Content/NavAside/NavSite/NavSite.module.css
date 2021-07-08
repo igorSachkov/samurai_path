@@ -1,0 +1,6 @@
+.nav__item:hover {
+    text-shadow: 5px 5px 5px black;
+}
+.active {
+    opacity: 0.5;
+}

@@ -1,0 +1,26 @@
+.dialogWindow {
+    width: 100%;
+    min-height: 90vh;
+    position: fixed;
+}
+.messages {
+    padding: 10px 0px 0px 10px;
+}
+
+
+
+.dialogSideBar {
+    position: fixed;
+    right: 0;
+    transform: translateX(300px);
+    transition: transform 1s;
+}
+
+@media (min-width: 992px) {
+    .dialogSideBar {
+        transform: translateX(0px);
+    }
+    .dialogWindow {
+        width: calc(100% - 570px);
+    }
+}

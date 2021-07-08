@@ -1,0 +1,14 @@
+.aside__container {
+    display: none;
+    max-width: 250px;
+}
+@media (min-width: 992px) {
+    .aside__container {
+        display: block;
+        width: 250px;
+        height: 800px;
+        position: fixed;
+        background-color: bisque;
+        margin-top: 72px;
+    }
+}

@@ -2,11 +2,13 @@ import EvgeniyAva from "../../../Images/EvgeniyAva.jpg"
 import c from "./ProfileAvatar.module.css"
 
 
-const ProfileAvatar = function() {
+const ProfileAvatar = function () {
     return (
-        <figure>
+        <div className={c.wrapper__ava}>
             <img className={c.ava} src={EvgeniyAva} alt="avatar"></img>
-        </figure>
+        </div>
+
+
     )
 }
 

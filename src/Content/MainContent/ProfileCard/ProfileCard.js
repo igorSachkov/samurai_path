@@ -1,6 +1,9 @@
 import c from "./ProfileCard.module.css"
 import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfilePagePost from "./ProfilePagePost/ProfilePagePost";
+
+
 const ProfileCard = function () {
     return (
         <div className={c.profile}>
@@ -12,7 +15,10 @@ const ProfileCard = function () {
                     <div className={c.mail}>evgeniy@mail.ru</div>
                 </div>
             </div>
-            <ProfileStatus></ProfileStatus>
+            <ProfileStatus />
+            <div>
+                <ProfilePagePost />
+            </div>
         </div>
 
     )

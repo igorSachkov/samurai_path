@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import State from "./State"
+import State from "./redux/State"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App asideContacts={State.dialogsArray} mainProfile={State.mainProfile}/>
+    <App state={State}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

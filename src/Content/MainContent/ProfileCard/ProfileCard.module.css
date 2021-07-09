@@ -1,0 +1,20 @@
+.profileSideBar {
+    position: fixed;
+    right: 0;
+    top: 72px;
+    transform: translateX(300px);
+    transition: transform 1s;
+
+    width: 300px;
+
+    z-index: 4;
+}
+
+@media (min-width: 992px) {
+    .profileSideBar {
+        transform: translateX(0px);
+    }
+    .profileMain {
+        width: calc(100% - 320px);
+    }
+}

@@ -10,14 +10,13 @@ import Settings from './Content/MainContent/Settings/Settings';
 import MobileFooter from './Content/MobileFooter/MobileFooter';
 
 function App(props) {
-  // debugger
   return (
     <BrowserRouter>
       <div className="wrapper">
         <Header></Header>
         <NavAside></NavAside>
         <div className="main-container">
-          <Route path="/profile" component={ProfileCard} />
+          <Route path="/profile" render={()=> <ProfileCard mainProfile={props.mainProfile}/>} />
           <Route path="/dialogs" render={()=> <Dialogs asideContacts={props.asideContacts}/>} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

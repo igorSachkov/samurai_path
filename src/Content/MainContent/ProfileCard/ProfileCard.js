@@ -1,26 +1,16 @@
-import c from "./ProfileCard.module.css"
-import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileHeader from "./ProfileHeader/ProfileHeader";
+import ProfileMain from "./ProfileMain/ProfileMain";
 import ProfilePagePost from "./ProfilePagePost/ProfilePagePost";
 
 
-const ProfileCard = function () {
-    return (
-        <div className={c.profile}>
-            <div className={c.background}></div>
-            <div className={c.profile__card}>
-                <ProfileAvatar></ProfileAvatar>
-                <div>
-                    <div>Евгений Левобережный</div>
-                    <div className={c.mail}>evgeniy@mail.ru</div>
-                </div>
-            </div>
-            <ProfileStatus />
-            <div>
-                <ProfilePagePost />
-            </div>
-        </div>
 
+const ProfileCard = function (props) {
+    return (
+        <div>
+            <ProfileHeader mainProfile={props.mainProfile} />
+            <ProfileMain mainProfile={props.mainProfile} />
+            <ProfilePagePost mainProfile={props.mainProfile}/>
+        </div>
     )
 }
 

@@ -2,25 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import DialogProfiles from "./Content/MainContent/Dialogs/DialogsSideBar/DialogProfiles/DialogProfiles"
 
-
-
-let dialogsArray = [
-  {id: "1", avatar:  "ava", name: "Кирилл", status: "online" },
-  {id: "2", avatar:  "ava", name: "Анастасия", status: "online" },
-  {id: "3", avatar:  "ava", name: "Филипп", status: "offline" },
-  {id: "4", avatar:  "ava", name: "Григорий", status: "online" },
-  {id: "5", avatar:  "ava", name: "Артем", status: "online" }
-]
-let dialogsArrayOut = dialogsArray.map( (el)=> {
-  return (<DialogProfiles id={el.id} avatar ={el.avatar} name={el.name} status={el.status}  />)
-})
-
+import State from "./State"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App asideContacts={dialogsArrayOut}/>
+    <App asideContacts={State.dialogsArray} mainProfile={State.mainProfile}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

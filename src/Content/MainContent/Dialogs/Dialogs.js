@@ -1,5 +1,6 @@
 import c from "./Dialogs.module.css"
 import DialogsSideBar from "./DialogsSideBar/DialogsSideBar"
+import DialogProfiles from "./DialogsSideBar/DialogProfiles/DialogProfiles"
 
 const Dialog = (props) => {
     return (
@@ -7,7 +8,14 @@ const Dialog = (props) => {
     )
 }
 
-const Dialogs = function () {
+
+
+
+
+
+
+const Dialogs = function (props) {
+    // debugger
     return (
         <div>
             <div className={c.dialogWindow}>
@@ -19,7 +27,7 @@ const Dialogs = function () {
 
             </div>
             <div className={c.dialogSideBar}>
-                <DialogsSideBar></DialogsSideBar>
+                <DialogsSideBar asideContacts={props.asideContacts}></DialogsSideBar>
             </div>
         </div>
 

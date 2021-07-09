@@ -7,9 +7,10 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import News from './Content/MainContent/News/News';
 import Music from './Content/MainContent/Music/Music';
 import Settings from './Content/MainContent/Settings/Settings';
-import MobileFooter from './Content/MainContent/MobileFooter/MobileFooter';
+import MobileFooter from './Content/MobileFooter/MobileFooter';
 
-function App() {
+function App(props) {
+  // debugger
   return (
     <BrowserRouter>
       <div className="wrapper">
@@ -17,7 +18,7 @@ function App() {
         <NavAside></NavAside>
         <div className="main-container">
           <Route path="/profile" component={ProfileCard} />
-          <Route path="/dialogs" component={Dialogs} />
+          <Route path="/dialogs" render={()=> <Dialogs asideContacts={props.asideContacts}/>} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

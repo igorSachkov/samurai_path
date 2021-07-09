@@ -1,6 +1,6 @@
 import c from "./MobileFooter.module.css"
-import MusicIcon from "../../Images/music-player.png"
-import Dialogs from "../../Images/dialog.png"
+import MusicIcon from "../Images/music-player.png"
+import Dialogs from "../Images/dialog.png"
 
 const MobileFooter = function () {
     return (

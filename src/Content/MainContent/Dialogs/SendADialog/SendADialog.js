@@ -5,18 +5,18 @@ const SendADialog = (props) => {
     let newPostElement = React.createRef()
 
     let addMessage = () => {
-        
-        props.addDialog()
-        
+
+        props.store.addDialogMessage()
+
     }
-    let changeTextArea = ()=> {
+    let changeTextArea = () => {
         let text = newPostElement.current.value
-        props.updateDialogTextArea(text)
+        props.store.updateDialogTextArea(text)
     }
     return (
         <div>
             <div>
-                <textarea ref={newPostElement} value={props.textArea} onChange={changeTextArea}/>
+                <textarea ref={newPostElement} value={props.store.state.dialogPage.dialogTextArea} onChange={changeTextArea} />
             </div>
             <div>
                 <button onClick={addMessage}>Отправить</button>

@@ -3,7 +3,8 @@ import DialogsSideBar from "./DialogsSideBar/DialogsSideBar"
 import SendADialog from "./SendADialog/SendADialog"
 
 const DialogItem = function (props) {
-    let friendsList = props.state.map((el) => {
+    debugger
+    let friendsList = props.dialogs.map((el) => {
         return (
             
             <div key={el.id}>
@@ -27,18 +28,19 @@ const DialogItem = function (props) {
 
 
 const Dialogs = function (props) {
-    // debugger
+    
     return (
+        
         <div>
             <div className={c.dialogWindow}>
                 <div className={c.messages}>
-                    <DialogItem state = {props.state.dialogMessages}/>
+                    <DialogItem dialogs = {props.store.state.dialogPage.dialogMessages}/>
                 </div>
-                <SendADialog addDialog={props.addDialog} textArea = {props.state.dialogTextArea} updateDialogTextArea={props.updateDialogTextArea}></SendADialog>
+                <SendADialog store={props.store}></SendADialog>
 
             </div>
             <div className={c.dialogSideBar}>
-                <DialogsSideBar asideContacts={props.state.dialogsArray}></DialogsSideBar>
+                <DialogsSideBar asideContacts={props.store.state.dialogPage.dialogsArray}></DialogsSideBar>
             </div>
         </div>
 

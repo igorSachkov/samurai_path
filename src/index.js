@@ -1,24 +1,23 @@
-import StateObj from "./redux/State";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {addDialogMessage, updateDialogTextArea, subscriber} from "./redux/State";
+import {store} from "./redux/State";
 import './index.css';
 
 
 
-let reRender = (props)=> {
+let reRender = ()=> {
     ReactDOM.render(
       <React.StrictMode>
-        <App state={props} addDialog={addDialogMessage} updateDialogTextArea= {updateDialogTextArea}/>
+        <App store={store}/>
       </React.StrictMode>,
       document.getElementById('root')
     );
   }
 
 
-subscriber(reRender)
-reRender(StateObj)
+store.subscriber(reRender)
+reRender(store.state)
 
 
 

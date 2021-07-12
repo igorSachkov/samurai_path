@@ -34,7 +34,7 @@ const Dialogs = function (props) {
                 <div className={c.messages}>
                     <DialogItem state = {props.state.dialogMessages}/>
                 </div>
-                <SendADialog addDialog={props.addDialog}></SendADialog>
+                <SendADialog addDialog={props.addDialog} textArea = {props.state.dialogTextArea} updateDialogTextArea={props.updateDialogTextArea}></SendADialog>
 
             </div>
             <div className={c.dialogSideBar}>

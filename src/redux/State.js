@@ -1,5 +1,4 @@
-import {reRender} from "../ReRender"
-
+let reRender;
 
 let stateObj = {
 
@@ -33,7 +32,8 @@ let stateObj = {
             {id: 1, author: "Kirill", message: "Oh hi Mark."},
             {id: 2, author: "Kirill", message: "hello there"},
             {id: 3, author: "Kirill", message: "why are you running?"},
-        ]
+        ],
+        dialogTextArea: ""
     
             
             
@@ -41,12 +41,19 @@ let stateObj = {
     }
 
 }
-
-export let addDialogMessage = function(message) {
-    
+export let addDialogMessage = function() { 
     let dialogMessagesLength =  stateObj.dialogPage.dialogMessages.length + 1;
-    stateObj.dialogPage.dialogMessages.push({id: dialogMessagesLength, author: "Author", message: message})
-    reRender()
+    stateObj.dialogPage.dialogMessages.push({id: dialogMessagesLength, author: "Author", message:  stateObj.dialogPage.dialogTextArea})
+    stateObj.dialogPage.dialogTextArea = ""
+    reRender(stateObj)
+    
+}
+export let updateDialogTextArea = (text)=> {
+    stateObj.dialogPage.dialogTextArea = text;
+    reRender(stateObj)
+}
+export let subscriber = (observer)=> {
+    reRender = observer;
 }
 
 export default stateObj

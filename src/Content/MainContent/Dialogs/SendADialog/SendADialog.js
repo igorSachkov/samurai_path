@@ -5,13 +5,13 @@ const SendADialog = (props) => {
     let newPostElement = React.createRef()
 
     let addMessage = () => {
-
-        props.store.addDialogMessage()
+        let action = {type: "ADD-DIALOG_MESSAGE"}
+        props.store.dispatch(action)
 
     }
     let changeTextArea = () => {
-        let text = newPostElement.current.value
-        props.store.updateDialogTextArea(text)
+        let action = {type: "UPDATE-DIALOG-TEXT-AREA", text: newPostElement.current.value}
+        props.store.dispatch(action)
     }
     return (
         <div>

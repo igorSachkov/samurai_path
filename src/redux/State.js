@@ -1,6 +1,5 @@
-
 export let store = {
-    state: {
+    _state: {
         profilePage: {
             mainProfile: {
                 profileName: "Кирилл Левобережный",
@@ -35,19 +34,35 @@ export let store = {
             dialogTextArea: ""
         }
     },
-    addDialogMessage() {
+    get state() {
+        return this._state
+    },
+    set state(value) {
+        return
+    },
+    _subscriber(observer) {
+        this.reRender = observer;
+    },
+    get subscriber() {
+        return this._subscriber
+    },
+    reRender() {
+    },
+    _addDialogMessage() {
         let dialogMessagesLength = this.state.dialogPage.dialogMessages.length + 1;
         this.state.dialogPage.dialogMessages.push({ id: dialogMessagesLength, author: "Author", message: this.state.dialogPage.dialogTextArea })
         this.state.dialogPage.dialogTextArea = ""
         this.reRender(this.state)
     },
-    updateDialogTextArea(text) {
+    _updateDialogTextArea(text) {
         this.state.dialogPage.dialogTextArea = text;
         this.reRender(this.state)
     },
-    subscriber(observer) {
-        this.reRender = observer;
-    },
-    reRender() {
+    dispatch(action) {
+        if (action.type === "ADD-DIALOG_MESSAGE") {
+            this._addDialogMessage()
+        } else if (action.type === "UPDATE-DIALOG-TEXT-AREA") {
+            this._updateDialogTextArea(action.text)
+        }
     }
 }

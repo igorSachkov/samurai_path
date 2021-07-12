@@ -1,3 +1,6 @@
+import {reRender} from "../ReRender"
+
+
 let stateObj = {
 
     profilePage: {
@@ -26,16 +29,24 @@ let stateObj = {
             {id: "4", avatar:  "https://image.freepik.com/free-photo/african-american-handsome-man-isolated-pink-background-shouting-through-megaphone-pointing-side_1368-213685.jpg", name: "Григорий", status: "online" },
             {id: "5", avatar:  "https://image.freepik.com/free-photo/handsome-freelancer-man-holding-laptop-smiling-standing-happy-light-turquoise-wall_1258-23916.jpg", name: "Артем", status: "online" }
         ],
-        dialogsActive: {
-            interlocutor: {id: "1", avatar:  "https://image.freepik.com/free-photo/handsome-young-man-pink-shirt-isolated-blue-wall-laughing_1368-55070.jpg", name: "Кирилл", status: "online" },
-            
-        }
+        dialogMessages: [
+            {id: 1, author: "Kirill", message: "Oh hi Mark."},
+            {id: 2, author: "Kirill", message: "hello there"},
+            {id: 3, author: "Kirill", message: "why are you running?"},
+        ]
+    
             
             
         
     }
 
-// some
+}
+
+export let addDialogMessage = function(message) {
+    
+    let dialogMessagesLength =  stateObj.dialogPage.dialogMessages.length + 1;
+    stateObj.dialogPage.dialogMessages.push({id: dialogMessagesLength, author: "Author", message: message})
+    reRender()
 }
 
 export default stateObj

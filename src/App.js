@@ -18,7 +18,7 @@ function App(props) {
         <NavAside></NavAside>
         <div className="main-container">
           <Route path="/profile" render={()=> <ProfileCard state={props.state.profilePage}/>} />
-          <Route path="/dialogs" render={()=> <Dialogs asideContacts={props.state.dialogPage.dialogsArray}/>} />
+          <Route path="/dialogs" render={()=> <Dialogs state={props.state.dialogPage} addDialog = {props.addDialog}/>} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

@@ -1,10 +1,22 @@
 import c from "./Dialogs.module.css"
 import DialogsSideBar from "./DialogsSideBar/DialogsSideBar"
-import DialogProfiles from "./DialogsSideBar/DialogProfiles/DialogProfiles"
+import SendADialog from "./SendADialog/SendADialog"
 
-const Dialog = (props) => {
+const DialogItem = function (props) {
+    let friendsList = props.state.map((el) => {
+        return (
+            
+            <div key={el.id}>
+                <div>{el.author}</div>
+                <div>{el.message}</div>
+            </div>
+
+        )
+    })
+
     return (
-        <div>{props.message}</div>
+        <div>{friendsList}</div>
+
     )
 }
 
@@ -20,14 +32,13 @@ const Dialogs = function (props) {
         <div>
             <div className={c.dialogWindow}>
                 <div className={c.messages}>
-                    <Dialog message="Hello" />
-                    <Dialog message="How are you?" />
-                    <Dialog message="Beiil" />
+                    <DialogItem state = {props.state.dialogMessages}/>
                 </div>
+                <SendADialog addDialog={props.addDialog}></SendADialog>
 
             </div>
             <div className={c.dialogSideBar}>
-                <DialogsSideBar asideContacts={props.asideContacts}></DialogsSideBar>
+                <DialogsSideBar asideContacts={props.state.dialogsArray}></DialogsSideBar>
             </div>
         </div>
 

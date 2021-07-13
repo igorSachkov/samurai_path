@@ -17,7 +17,7 @@ function App(props) {
         <Header></Header>
         <NavAside></NavAside>
         <div className="main-container">
-          <Route path="/profile" render={()=> <ProfileCard profilePage={props.store.state.profilePage}/>} />
+          <Route path="/profile" render={()=> <ProfileCard store={props.store}/>} />
           <Route path="/dialogs" render={()=> <Dialogs store={props.store}/>} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

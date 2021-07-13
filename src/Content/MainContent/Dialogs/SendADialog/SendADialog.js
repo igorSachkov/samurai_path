@@ -1,16 +1,16 @@
 import React from "react"
-
+import {addDialogMessageActionCreator, updateDialogTextAreaActionCreator} from "../../../../redux/State"
 
 const SendADialog = (props) => {
     let newPostElement = React.createRef()
 
     let addMessage = () => {
-        let action = {type: "ADD-DIALOG_MESSAGE"}
+        let action = addDialogMessageActionCreator()
         props.store.dispatch(action)
 
     }
     let changeTextArea = () => {
-        let action = {type: "UPDATE-DIALOG-TEXT-AREA", text: newPostElement.current.value}
+        let action = updateDialogTextAreaActionCreator(newPostElement.current.value)
         props.store.dispatch(action)
     }
     return (

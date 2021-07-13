@@ -10,14 +10,14 @@ const ProfileCard = function (props) {
    
     return (
         <div>
-            <ProfileHeader mainProfile={props.profilePage.mainProfile} />
+            <ProfileHeader mainProfile={props.store._state.profilePage.mainProfile} />
             <div className={c.profileMain}>
-                <ProfileMain mainProfile={props.profilePage.mainProfile} />
-                <ProfilePagePost mainProfile={props.profilePage.mainProfile} />
+                <ProfileMain store = {props.store} />
+                <ProfilePagePost mainProfile={props.store._state.profilePage.mainProfile} />
             </div>
 
             <div className={c.profileSideBar}>
-                <ProfileSideBar state={props.profilePage.friends}/>
+                <ProfileSideBar state={props.store._state.profilePage.friends}/>
             </div>
         </div>
 

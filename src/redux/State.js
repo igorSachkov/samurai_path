@@ -1,7 +1,9 @@
-
+import { profileReducer } from "./profileReducer";
+import { dialogReducer } from "./dialogReducer";
 
 
 export let store = {
+    
     _state: {
         profilePage: {
             mainProfile: {
@@ -51,39 +53,11 @@ export let store = {
     },
     reRender() {
     },
-    _addDialogMessage() {
-        let dialogMessagesLength = this.state.dialogPage.dialogMessages.length + 1;
-        this._state.dialogPage.dialogMessages.push({ id: dialogMessagesLength, author: "Author", message: this.state.dialogPage.dialogTextArea })
-        this._state.dialogPage.dialogTextArea = ""
-        this.reRender(this.state)
-    },
-    _updateDialogTextArea(text) {
-        this._state.dialogPage.dialogTextArea = text;
-        this.reRender(this.state)
-    },
-    _updateProfileChangeStatusTextArea(text) {
-        this._state.profilePage.mainProfile.profileChangeStatusTextArea = text;
-        this.reRender(this.state)
-    },
-    _changeProfileStatus() {
-        this._state.profilePage.mainProfile.status =  this._state.profilePage.mainProfile.profileChangeStatusTextArea
-        this._state.profilePage.mainProfile.profileChangeStatusTextArea = ""
-        this.reRender(this.state)
-    },
     dispatch(action) {
-        if (action.type === "ADD-DIALOG_MESSAGE") {
-            this._addDialogMessage()
-        } else if (action.type === "UPDATE-DIALOG-TEXT-AREA") {
-            this._updateDialogTextArea(action.text)
-        } else if (action.type === "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA") {
-            this._updateProfileChangeStatusTextArea(action.text)
-        } else if (action.type === "CHANGE-PROFILE-STATUS") {
-            this._changeProfileStatus()
-        }
+        
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
+        
+        this.reRender(this._state)
     }
 }
-
-export const addDialogMessageActionCreator = ()=> ({type: "ADD-DIALOG_MESSAGE"})
-export const updateDialogTextAreaActionCreator = (value)=> ({type: "UPDATE-DIALOG-TEXT-AREA", text: value})
-export const updateProfileChangeStatusTextArea = (value)=> ({type: "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA", text: value})
-export const changeProfileStatus = ()=> ({type: "CHANGE-PROFILE-STATUS"})

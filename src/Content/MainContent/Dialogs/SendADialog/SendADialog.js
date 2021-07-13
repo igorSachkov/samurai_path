@@ -1,5 +1,5 @@
 import React from "react"
-import {addDialogMessageActionCreator, updateDialogTextAreaActionCreator} from "../../../../redux/State"
+import {addDialogMessageActionCreator, updateDialogTextAreaActionCreator} from "../../../../redux/dialogReducer"
 
 const SendADialog = (props) => {
     let newPostElement = React.createRef()

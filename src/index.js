@@ -7,6 +7,7 @@ import './index.css';
 
 
 let reRender = ()=> {
+  
     ReactDOM.render(
       <React.StrictMode>
         <App store={store}/>

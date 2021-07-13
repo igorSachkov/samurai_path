@@ -8,18 +8,18 @@ const ProfileChangeStatus = (props) => {
     let addMessage = () => {
         
         let action = changeProfileStatus()
-        props.store.dispatch(action)
+        props.dispatch(action)
 
     }
     let changeTextArea = () => {
         
         let action = updateProfileChangeStatusTextArea(changeProfileStatusTextArea.current.value)
-        props.store.dispatch(action)
+        props.dispatch(action)
     }
     return (
         <div>
             <div>
-                <textarea ref={changeProfileStatusTextArea} value={props.store.getState().profileReducer.mainProfile.profileChangeStatusTextArea} onChange={changeTextArea} />
+                <textarea ref={changeProfileStatusTextArea} value={props.mainProfile.profileChangeStatusTextArea} onChange={changeTextArea} />
             </div>
             <div>
                 <button onClick={addMessage}>Изменить статус</button>

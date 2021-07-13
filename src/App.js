@@ -1,8 +1,8 @@
 import './App.css'
 import Header from "./Content/Header/Header"
 import NavAside from './Content/NavAside/NavAside';
-import ProfileCard from './Content/MainContent/ProfileCard/ProfileCard';
-import Dialogs from './Content/MainContent/Dialogs/Dialogs';
+import ProfileCardContainer from './Content/MainContent/ProfileCard/ProfileCardContainer';
+import DialogsContainer from './Content/MainContent/Dialogs/DialogsContainer';
 import { Route, BrowserRouter } from 'react-router-dom';
 import News from './Content/MainContent/News/News';
 import Music from './Content/MainContent/Music/Music';
@@ -17,8 +17,8 @@ function App(props) {
         <Header></Header>
         <NavAside></NavAside>
         <div className="main-container">
-          <Route path="/profile" render={()=> <ProfileCard store={props.store}/>} />
-          <Route path="/dialogs" render={()=> <Dialogs store={props.store}/>} />
+          <Route path="/profile" render={()=> <ProfileCardContainer store={props.store}/>} />
+          <Route path="/dialogs" render={()=> <DialogsContainer store={props.store}/>} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

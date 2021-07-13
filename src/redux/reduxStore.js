@@ -3,8 +3,8 @@ import {profileReducer} from "./profileReducer"
 import {dialogReducer} from "./dialogReducer"
 
 let reducers = combineReducers({
-    profileReducer,
-    dialogReducer
+    profileReducer: profileReducer,
+    dialogReducer: dialogReducer
 })
 
 

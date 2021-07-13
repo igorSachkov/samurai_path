@@ -15,13 +15,13 @@ const Dialogs = function (props) {
         <div>
             <div className={c.dialogWindow}>
                 <div className={c.messages}>
-                    <DialogItem dialogs={props.store.getState().dialogReducer.dialogMessages} />
+                    <DialogItem dialogs={props.dialogs} />
                 </div>
-                <SendADialog store={props.store}></SendADialog>
+                <SendADialog dialogTextArea={props.dialogTextArea} dispatch={props.dispatch}></SendADialog>
 
             </div>
             <div className={c.dialogSideBar}>
-                <DialogsSideBar asideContacts={props.store.getState().dialogReducer.dialogsArray}></DialogsSideBar>
+                <DialogsSideBar asideContacts={props.asideContacts}></DialogsSideBar>
             </div>
         </div>
 

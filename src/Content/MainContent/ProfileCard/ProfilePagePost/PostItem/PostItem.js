@@ -2,7 +2,6 @@
 
 
 const PostItem = function(props) {
-    console.log(props.mainProfile.posts[0])
 
 
     let post = props.mainProfile.posts.map((post)=> {

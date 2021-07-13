@@ -7,17 +7,17 @@ const SendADialog = (props) => {
 
     let addMessage = () => {
         let action = addDialogMessageActionCreator()
-        props.store.dispatch(action)
+        props.dispatch(action)
 
     }
     let changeTextArea = () => {
         let action = updateDialogTextAreaActionCreator(newPostElement.current.value)
-        props.store.dispatch(action)
+        props.dispatch(action)
     }
     return (
         <div>
             <div>
-                <textarea ref={newPostElement} value={props.store.getState().dialogReducer.dialogTextArea} onChange={changeTextArea} />
+                <textarea ref={newPostElement} value={props.dialogTextArea} onChange={changeTextArea} />
             </div>
             <div>
                 <button onClick={addMessage}>Отправить</button>

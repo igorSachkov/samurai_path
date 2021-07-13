@@ -2,13 +2,12 @@ import c from "./ProfileMain.module.css"
 import ProfileChangeStatus from "./ProfileChangeStatus/ProfileChangeStatus"
 
 const ProfileMain = function (props) {
-  
   return (
     <div>
       <div className={c.profile}>
-        <div>{props.store.getState().profileReducer.mainProfile.status}</div>
+        <div>{props.mainProfile.status}</div>
       </div>
-      <ProfileChangeStatus store={props.store}/>
+      <ProfileChangeStatus mainProfile={props.mainProfile} dispatch={props.dispatch}/>
     </div>
 
 

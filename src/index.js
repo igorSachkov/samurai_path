@@ -4,9 +4,10 @@ import App from './App';
 import store from "./redux/reduxStore";
 import './index.css';
 
-
+console.log(store.getState())
 
 let reRender = () => {
+  
   ReactDOM.render(
     <React.StrictMode>
       <App store={store}/>

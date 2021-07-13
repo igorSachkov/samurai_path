@@ -19,7 +19,7 @@ const ProfileChangeStatus = (props) => {
     return (
         <div>
             <div>
-                <textarea ref={changeProfileStatusTextArea} value={props.store._state.profilePage.mainProfile.profileChangeStatusTextArea} onChange={changeTextArea} />
+                <textarea ref={changeProfileStatusTextArea} value={props.store.getState().profileReducer.mainProfile.profileChangeStatusTextArea} onChange={changeTextArea} />
             </div>
             <div>
                 <button onClick={addMessage}>Изменить статус</button>

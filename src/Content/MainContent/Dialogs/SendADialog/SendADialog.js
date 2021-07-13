@@ -2,6 +2,7 @@ import React from "react"
 import {addDialogMessageActionCreator, updateDialogTextAreaActionCreator} from "../../../../redux/dialogReducer"
 
 const SendADialog = (props) => {
+    
     let newPostElement = React.createRef()
 
     let addMessage = () => {
@@ -16,7 +17,7 @@ const SendADialog = (props) => {
     return (
         <div>
             <div>
-                <textarea ref={newPostElement} value={props.store.state.dialogPage.dialogTextArea} onChange={changeTextArea} />
+                <textarea ref={newPostElement} value={props.store.getState().dialogReducer.dialogTextArea} onChange={changeTextArea} />
             </div>
             <div>
                 <button onClick={addMessage}>Отправить</button>

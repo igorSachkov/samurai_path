@@ -1,24 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {store} from "./redux/State";
+import store from "./redux/reduxStore";
 import './index.css';
 
 
 
-let reRender = ()=> {
+let reRender = () => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App store={store}/>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
   
-    ReactDOM.render(
-      <React.StrictMode>
-        <App store={store}/>
-      </React.StrictMode>,
-      document.getElementById('root')
-    );
-  }
+}
 
+reRender(store.getState())
+store.subscribe(()=> {
+  reRender(store)
+})
 
-store.subscriber(reRender)
-reRender(store.state)
 
 
 

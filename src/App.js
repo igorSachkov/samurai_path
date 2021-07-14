@@ -9,6 +9,7 @@ import Music from './Content/MainContent/Music/Music';
 import Settings from './Content/MainContent/Settings/Settings';
 import MobileFooter from './Content/MobileFooter/MobileFooter';
 import {Provider} from "react-redux"
+import UsersContainer from './Content/Users/UsersContainer';
 
 
 function App(props) {
@@ -22,6 +23,7 @@ function App(props) {
           <div className="main-container">
             <Route path="/profile" render={() => <ProfileCardContainer />} />
             <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/news" component={News} />
             <Route path="/music" component={Music} />
             <Route path="/settings" component={Settings} />

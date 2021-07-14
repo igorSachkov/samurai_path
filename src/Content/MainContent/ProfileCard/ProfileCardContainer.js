@@ -1,6 +1,6 @@
 import ProfileCard from "./ProfileCard";
 import { connect } from "react-redux";
-import { changeProfileStatus, updateProfileChangeStatusTextArea } from "../../../redux/profileReducer"
+import { changeProfileStatusActionCreator, updateProfileChangeStatusTextAreaActionCreator } from "../../../redux/profileReducer"
 
 
 const mapStateToProps = (state) => {
@@ -14,13 +14,13 @@ const mapDispatchToProps = (dispatch) => {
     
     return {
         addMessage: () => {
-            let action = changeProfileStatus()
+            let action = changeProfileStatusActionCreator()
             dispatch(action)
     
         },
         changeTextArea: (text) => {
         
-            let action = updateProfileChangeStatusTextArea(text)
+            let action = updateProfileChangeStatusTextAreaActionCreator(text)
             dispatch(action)
         }
     }

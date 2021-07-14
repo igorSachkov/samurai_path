@@ -11,6 +11,9 @@ const NavSite = function() {
                 <NavLink to="/dialogs" className={c.nav__item} activeClassName={c.active}>Диалоги</NavLink>
             </li>
             <li>
+                <NavLink to="/users" className={c.nav__item} activeClassName={c.active}>Пользователи</NavLink>
+            </li>
+            <li>
                 <NavLink to="/news" className={c.nav__item} activeClassName={c.active}>Новости</NavLink>
             </li>
             <li>
@@ -19,6 +22,7 @@ const NavSite = function() {
             <li>
                 <NavLink to="/settings" className={c.nav__item} activeClassName={c.active}>Настройки</NavLink>
             </li>
+
         </ul>
         
     )

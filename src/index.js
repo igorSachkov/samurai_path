@@ -4,23 +4,14 @@ import App from './App';
 import store from "./redux/reduxStore";
 import './index.css';
 
-console.log(store.getState())
 
-let reRender = () => {
-  
-  ReactDOM.render(
-    <React.StrictMode>
-      <App store={store}/>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-  
-}
+ReactDOM.render(
+  <React.StrictMode>
+    <App store={store} />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-reRender(store.getState())
-store.subscribe(()=> {
-  reRender(store)
-})
 
 
 

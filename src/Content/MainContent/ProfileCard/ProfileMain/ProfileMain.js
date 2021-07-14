@@ -7,7 +7,7 @@ const ProfileMain = function (props) {
       <div className={c.profile}>
         <div>{props.mainProfile.status}</div>
       </div>
-      <ProfileChangeStatus mainProfile={props.mainProfile} dispatch={props.dispatch}/>
+      <ProfileChangeStatus mainProfile={props.mainProfile} addMessage={props.addMessage} changeTextArea={props.changeTextArea}/>
     </div>
 
 

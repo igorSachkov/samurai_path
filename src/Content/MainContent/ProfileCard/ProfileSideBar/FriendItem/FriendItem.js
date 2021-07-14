@@ -3,7 +3,8 @@ import c from "./FriendItem.module.css"
 
 
 const FriendItem = function (props) {
-    let friendsList = props.state.map((el) => {
+    
+    let friendsList = props.friends.map((el) => {
         return (
             <div className={c.friendList}>
                 <div className={c.avatar}>

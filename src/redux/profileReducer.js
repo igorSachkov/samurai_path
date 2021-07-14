@@ -19,18 +19,26 @@ let initialStore = {
 
 
 export const profileReducer = (state = initialStore, action) => {
-   
+   let stateCopy = {
+       ...state,
+       mainProfile: {...state.mainProfile}
+   }
     
     switch (action.type) {
-        case "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA":
+        case "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA": 
 
-            state.mainProfile.profileChangeStatusTextArea = action.text;
-            return state;
-        case "CHANGE-PROFILE-STATUS":
 
-            state.mainProfile.status = state.mainProfile.profileChangeStatusTextArea;
-            state.mainProfile.profileChangeStatusTextArea = "";
-            return state;
+            stateCopy.mainProfile.profileChangeStatusTextArea = action.text;
+
+            return stateCopy;
+        
+        case "CHANGE-PROFILE-STATUS": 
+            
+
+            stateCopy.mainProfile.status = state.mainProfile.profileChangeStatusTextArea;
+            stateCopy.mainProfile.profileChangeStatusTextArea = "";
+            return stateCopy;
+        
         default:
             return state;
 

@@ -12,12 +12,12 @@ const ProfileCard = function (props) {
         <div>
             <ProfileHeader mainProfile={props.mainProfile} />
             <div className={c.profileMain}>
-                <ProfileMain mainProfile={props.mainProfile} dispatch={props.dispatch}/>
+                <ProfileMain mainProfile={props.mainProfile} addMessage={props.addMessage} changeTextArea={props.changeTextArea}/>
                 <ProfilePagePost mainProfile={props.mainProfile} />
             </div>
 
             <div className={c.profileSideBar}>
-                <ProfileSideBar state={props.friends}/>
+                <ProfileSideBar friends={props.friends}/>
             </div>
         </div>
 

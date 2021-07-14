@@ -9,7 +9,7 @@ import DialogItem from "./DialogItem/DialogItem"
 
 
 const Dialogs = function (props) {
-    
+
     return (
 
         <div>
@@ -17,7 +17,7 @@ const Dialogs = function (props) {
                 <div className={c.messages}>
                     <DialogItem dialogs={props.dialogs} />
                 </div>
-                <SendADialog dialogTextArea={props.dialogTextArea} dispatch={props.dispatch}></SendADialog>
+                <SendADialog dialogTextArea={props.dialogTextArea} dispatch={props.dispatch} addMessage={props.addMessage} changeTextArea={props.changeTextArea}></SendADialog>
 
             </div>
             <div className={c.dialogSideBar}>

@@ -8,26 +8,31 @@ import News from './Content/MainContent/News/News';
 import Music from './Content/MainContent/Music/Music';
 import Settings from './Content/MainContent/Settings/Settings';
 import MobileFooter from './Content/MobileFooter/MobileFooter';
+import {Provider} from "react-redux"
+
 
 function App(props) {
-  
+
   return (
     <BrowserRouter>
-      <div className="wrapper">
-        <Header></Header>
-        <NavAside></NavAside>
-        <div className="main-container">
-          <Route path="/profile" render={()=> <ProfileCardContainer store={props.store}/>} />
-          <Route path="/dialogs" render={()=> <DialogsContainer store={props.store}/>} />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
-        </div>
-        <div className="mobile-footer">
-          <MobileFooter ></MobileFooter>
-        </div>
+      <Provider store={props.store}>
+        <div className="wrapper">
+          <Header></Header>
+          <NavAside></NavAside>
+          <div className="main-container">
+            <Route path="/profile" render={() => <ProfileCardContainer />} />
+            <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route path="/news" component={News} />
+            <Route path="/music" component={Music} />
+            <Route path="/settings" component={Settings} />
+          </div>
+          <div className="mobile-footer">
+            <MobileFooter ></MobileFooter>
+          </div>
 
-      </div>
+        </div>
+      </Provider>
+
     </BrowserRouter>
 
 

@@ -11,7 +11,7 @@ const ProfileSideBar = function (props) {
         <div className={c.contacts__container}>
             <div>Друзья</div>
             <div className={c.contacts__items}>
-                <FriendItem state={props.state}/>
+                <FriendItem friends={props.friends}/>
             </div>
 
         </div>

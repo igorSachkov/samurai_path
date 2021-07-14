@@ -1,26 +1,27 @@
 import React from "react"
-import {addDialogMessageActionCreator, updateDialogTextAreaActionCreator} from "../../../../redux/dialogReducer"
 
 const SendADialog = (props) => {
     
     let newPostElement = React.createRef()
 
-    let addMessage = () => {
-        let action = addDialogMessageActionCreator()
-        props.dispatch(action)
+    
+    
+    let onAddMessage = () => {
+        
+        props.addMessage()
 
     }
-    let changeTextArea = () => {
-        let action = updateDialogTextAreaActionCreator(newPostElement.current.value)
-        props.dispatch(action)
+    let onChangeTextArea = () => {
+        let text = newPostElement.current.value
+        props.changeTextArea(text)
     }
     return (
         <div>
             <div>
-                <textarea ref={newPostElement} value={props.dialogTextArea} onChange={changeTextArea} />
+                <textarea ref={newPostElement} value={props.dialogTextArea} onChange={onChangeTextArea} />
             </div>
             <div>
-                <button onClick={addMessage}>Отправить</button>
+                <button onClick={onAddMessage}>Отправить</button>
             </div>
         </div>
     )

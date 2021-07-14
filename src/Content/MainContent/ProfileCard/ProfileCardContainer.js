@@ -1,15 +1,31 @@
 import ProfileCard from "./ProfileCard";
+import { connect } from "react-redux";
+import { changeProfileStatus, updateProfileChangeStatusTextArea } from "../../../redux/profileReducer"
 
 
-
-
-const ProfileCardContainer = function (props) {
-   
-    return (
-        <ProfileCard mainProfile={props.store.getState().profileReducer.mainProfile} friends={props.store.getState().profileReducer.friends} status={props.store.getState().profileReducer.mainProfile.status}
-            mainProfile={props.store.getState().profileReducer.mainProfile} dispatch={props.store.dispatch}
-        />
-    )
+const mapStateToProps = (state) => {
+    
+    return {
+        mainProfile: state.profilePage.mainProfile,
+        friends: state.profilePage.friends
+    }
 }
+const mapDispatchToProps = (dispatch) => {
+    
+    return {
+        addMessage: () => {
+            let action = changeProfileStatus()
+            dispatch(action)
+    
+        },
+        changeTextArea: (text) => {
+        
+            let action = updateProfileChangeStatusTextArea(text)
+            dispatch(action)
+        }
+    }
+}
+
+const ProfileCardContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileCard)
 
 export default ProfileCardContainer;

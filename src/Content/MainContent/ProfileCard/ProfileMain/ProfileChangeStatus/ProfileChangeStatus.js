@@ -6,15 +6,13 @@ const ProfileChangeStatus = (props) => {
     let changeProfileStatusTextArea = React.createRef()
 
     let addMessage = () => {
-        
-        let action = changeProfileStatus()
-        props.dispatch(action)
+        props.addMessage()
 
     }
     let changeTextArea = () => {
         
-        let action = updateProfileChangeStatusTextArea(changeProfileStatusTextArea.current.value)
-        props.dispatch(action)
+        let text = changeProfileStatusTextArea.current.value
+        props.changeTextArea(text)
     }
     return (
         <div>

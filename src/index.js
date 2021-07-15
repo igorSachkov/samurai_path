@@ -6,9 +6,9 @@ import './index.css';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  
     <App store={store} />
-  </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 

@@ -1,16 +1,15 @@
 let initialStore = {
-    users: [
-        // { id: 1, fullName: "Kostya", status: "Лев сильнее волка, но волк в цирке не выступает", location: { city: "Volgograd", country: "Russia" }, followed: true },
-        // { id: 2, fullName: "Svirepy", status: "Настоящий мужик должен", location: { city: "St. Petersburg", country: "Russia" }, followed: false },
-        // { id: 3, fullName: "Masha", status: "oh my", location: { city: "Kiev", country: "Ukraine" }, followed: true },
-        // { id: 4, fullName: "Karl", status: "cool", location: { city: "Berlin", country: "Germany" }, followed: false },
-    ]
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1,
+    isFetching: false
 
 }
 
 
 export const usersReducer = (state = initialStore, action) => {
-    
+
     switch (action.type) {
         case "FOLLOW":
             return {
@@ -41,7 +40,22 @@ export const usersReducer = (state = initialStore, action) => {
         case "SET-USERS":
             return {
                 ...state,
-                users:  [...state.users, ...action.users]
+                users: [...action.users]
+            }
+        case "SET-CURRENT-PAGE":
+            return {
+                ...state,
+                currentPage: action.page
+            }
+        case "SET-TOTAL-USERS-COUNT":
+            return {
+                ...state,
+                totalUsersCount: action.totalUsersCount
+            }
+        case "SET-IS-FETCHING":
+            return {
+                ...state,
+                isFetching: action.isFetching
             }
         default:
             return state
@@ -50,3 +64,6 @@ export const usersReducer = (state = initialStore, action) => {
 export const followActionCreator = (value) => ({ type: "FOLLOW", userId: value })
 export const unfollowActionCreator = (value) => ({ type: "UNFOLLOW", userId: value })
 export const setUsersActionCreator = (values) => ({ type: "SET-USERS", users: values })
+export const setCurrentPageActionCreator = (value) => ({ type: "SET-CURRENT-PAGE", page: value })
+export const setTotalUsersCountActionCreator = (value) => ({ type: "SET-TOTAL-USERS-COUNT", totalUsersCount: value })
+export const setIsFetchingActionCreator = (isFetching) => ({ type: "SET-IS-FETCHING", isFetching })

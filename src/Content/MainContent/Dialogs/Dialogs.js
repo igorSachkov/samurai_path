@@ -17,7 +17,7 @@ const Dialogs = function (props) {
                 <div className={c.messages}>
                     <DialogItem dialogs={props.dialogs} />
                 </div>
-                <SendADialog dialogTextArea={props.dialogTextArea} dispatch={props.dispatch} addMessage={props.addMessage} changeTextArea={props.changeTextArea}></SendADialog>
+                <SendADialog updateDialogTextArea={props.updateDialogTextArea} addDialogMessage={props.addDialogMessage} dialogTextArea={props.dialogTextArea}></SendADialog>
 
             </div>
             <div className={c.dialogSideBar}>

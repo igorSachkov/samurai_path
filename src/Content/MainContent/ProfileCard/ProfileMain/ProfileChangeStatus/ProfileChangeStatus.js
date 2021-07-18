@@ -1,18 +1,18 @@
 import React from "react"
-import {changeProfileStatus, updateProfileChangeStatusTextArea} from "../../../../../redux/profileReducer"
+
 
 const ProfileChangeStatus = (props) => {
     
     let changeProfileStatusTextArea = React.createRef()
 
     let addMessage = () => {
-        props.addMessage()
+        props.changeProfileStatus()
 
     }
     let changeTextArea = () => {
         
         let text = changeProfileStatusTextArea.current.value
-        props.changeTextArea(text)
+        props.updateProfileChangeStatusTextArea(text)
     }
     return (
         <div>

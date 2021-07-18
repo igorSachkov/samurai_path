@@ -37,5 +37,5 @@ export const dialogReducer = (state = initialStore, action) => {
     }
 }
 
-export const addDialogMessageActionCreator = () => ({ type: "ADD-DIALOG_MESSAGE" })
-export const updateDialogTextAreaActionCreator = (value) => ({ type: "UPDATE-DIALOG-TEXT-AREA", text: value })
+export const addDialogMessage = () => ({ type: "ADD-DIALOG_MESSAGE" })
+export const updateDialogTextArea = (value) => ({ type: "UPDATE-DIALOG-TEXT-AREA", text: value })

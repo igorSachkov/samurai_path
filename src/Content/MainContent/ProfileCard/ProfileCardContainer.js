@@ -1,6 +1,6 @@
 import ProfileCard from "./ProfileCard";
 import { connect } from "react-redux";
-import { changeProfileStatusActionCreator, updateProfileChangeStatusTextAreaActionCreator } from "../../../redux/profileReducer"
+import { changeProfileStatus, updateProfileChangeStatusTextArea } from "../../../redux/profileReducer"
 
 
 const mapStateToProps = (state) => {
@@ -10,22 +10,9 @@ const mapStateToProps = (state) => {
         friends: state.profilePage.friends
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    
-    return {
-        addMessage: () => {
-            let action = changeProfileStatusActionCreator()
-            dispatch(action)
-    
-        },
-        changeTextArea: (text) => {
-        
-            let action = updateProfileChangeStatusTextAreaActionCreator(text)
-            dispatch(action)
-        }
-    }
-}
 
-const ProfileCardContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileCard)
+const ProfileCardContainer = connect(mapStateToProps, {
+    changeProfileStatus, updateProfileChangeStatusTextArea
+})(ProfileCard)
 
 export default ProfileCardContainer;

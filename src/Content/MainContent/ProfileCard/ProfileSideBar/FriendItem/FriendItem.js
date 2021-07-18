@@ -4,9 +4,9 @@ import c from "./FriendItem.module.css"
 
 const FriendItem = function (props) {
     
-    let friendsList = props.friends.map((el) => {
+    let friendsList = props.friends.map((el, i) => {
         return (
-            <div className={c.friendList}>
+            <div className={c.friendList} key={i}>
                 <div className={c.avatar}>
                     <img src={el.avatar} alt="avatar"></img>
                 </div>

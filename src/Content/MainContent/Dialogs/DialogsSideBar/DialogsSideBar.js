@@ -12,7 +12,7 @@ import DialogProfiles from "./DialogProfiles/DialogProfiles"
 const DialogsSideBar = function (props) {
 
     let dialogsArrayOut = props.asideContacts.map( (el)=> {
-        return (<DialogProfiles id={el.id} avatar ={el.avatar} name={el.name} status={el.status}  />)
+        return (<DialogProfiles key={el.id} avatar ={el.avatar} name={el.name} status={el.status}  />)
       })
 
     return (

@@ -1,6 +1,6 @@
 import UsersClass from "./UsersClass"
 import { connect } from "react-redux";
-import {followActionCreator, unfollowActionCreator, setUsersActionCreator, setCurrentPageActionCreator, setTotalUsersCountActionCreator, setIsFetchingActionCreator} from "../../redux/usersReducer"
+import {follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching} from "../../redux/usersReducer"
 
 let mapStateToProps = (state) => {
     
@@ -13,34 +13,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            let action = followActionCreator(userId)
-            dispatch(action)
-        },
-        unfollow: (userId) => {
-            let action = unfollowActionCreator(userId)
-            dispatch(action)
-        },
-        setUsers: (users) => {
-            let action = setUsersActionCreator(users)
-            dispatch(action)
-        },
-        setPage: (page) => {
-            let action = setCurrentPageActionCreator(page)
-            dispatch(action)
-        },
-        setTotalUsersCount: (value)=> {
-            let action = setTotalUsersCountActionCreator(value)
-            dispatch(action)
-        },
-        setIsFetching: (isFetching) => {
-            let action = setIsFetchingActionCreator(isFetching)
-            dispatch(action)
-        }
-    }
-}
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClass)
+const UsersContainer = connect(mapStateToProps, {
+    follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching
+})(UsersClass)
 
 export default UsersContainer;

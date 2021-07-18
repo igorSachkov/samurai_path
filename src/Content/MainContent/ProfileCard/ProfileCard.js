@@ -12,7 +12,7 @@ const ProfileCard = function (props) {
         <div>
             <ProfileHeader mainProfile={props.mainProfile} />
             <div className={c.profileMain}>
-                <ProfileMain mainProfile={props.mainProfile} addMessage={props.addMessage} changeTextArea={props.changeTextArea}/>
+                <ProfileMain mainProfile={props.mainProfile} changeProfileStatus={props.changeProfileStatus} updateProfileChangeStatusTextArea={props.updateProfileChangeStatusTextArea}/>
                 <ProfilePagePost mainProfile={props.mainProfile} />
             </div>
 

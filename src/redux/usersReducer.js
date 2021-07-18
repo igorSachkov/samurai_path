@@ -61,9 +61,9 @@ export const usersReducer = (state = initialStore, action) => {
             return state
     }
 }
-export const followActionCreator = (value) => ({ type: "FOLLOW", userId: value })
-export const unfollowActionCreator = (value) => ({ type: "UNFOLLOW", userId: value })
-export const setUsersActionCreator = (values) => ({ type: "SET-USERS", users: values })
-export const setCurrentPageActionCreator = (value) => ({ type: "SET-CURRENT-PAGE", page: value })
-export const setTotalUsersCountActionCreator = (value) => ({ type: "SET-TOTAL-USERS-COUNT", totalUsersCount: value })
-export const setIsFetchingActionCreator = (isFetching) => ({ type: "SET-IS-FETCHING", isFetching })
+export const follow = (value) => ({ type: "FOLLOW", userId: value })
+export const unfollow = (value) => ({ type: "UNFOLLOW", userId: value })
+export const setUsers = (values) => ({ type: "SET-USERS", users: values })
+export const setPage = (value) => ({ type: "SET-CURRENT-PAGE", page: value })
+export const setTotalUsersCount = (value) => ({ type: "SET-TOTAL-USERS-COUNT", totalUsersCount: value })
+export const setIsFetching = (isFetching) => ({ type: "SET-IS-FETCHING", isFetching })

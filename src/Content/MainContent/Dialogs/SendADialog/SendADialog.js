@@ -8,12 +8,12 @@ const SendADialog = (props) => {
     
     let onAddMessage = () => {
         
-        props.addMessage()
+        props.addDialogMessage()
 
     }
     let onChangeTextArea = () => {
         let text = newPostElement.current.value
-        props.changeTextArea(text)
+        props.updateDialogTextArea(text)
     }
     return (
         <div>

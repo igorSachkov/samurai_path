@@ -44,5 +44,5 @@ export const profileReducer = (state = initialStore, action) => {
 
     }
 }
-export const updateProfileChangeStatusTextAreaActionCreator = (value) => ({ type: "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA", text: value })
-export const changeProfileStatusActionCreator = () => ({ type: "CHANGE-PROFILE-STATUS" })
+export const updateProfileChangeStatusTextArea = (value) => ({ type: "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA", text: value })
+export const changeProfileStatus = () => ({ type: "CHANGE-PROFILE-STATUS" })

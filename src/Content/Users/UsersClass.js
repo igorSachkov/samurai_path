@@ -14,7 +14,8 @@ class UsersClass extends React.Component {
 
         if (this.props.users.length === 0) {
             this.props.setIsFetching(true)
-            let promise = axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            let promise = axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+            { withCredentials: true})
             promise.then(response => {
                 this.props.setIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -27,7 +28,8 @@ class UsersClass extends React.Component {
         
         this.props.setIsFetching(true)
         this.props.setPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+        { withCredentials: true})
             .then(response => {
                 this.props.setIsFetching(false)
                 this.props.setUsers(response.data.items)

@@ -4,9 +4,7 @@ import userDefaultAvatar from "../Images/userDefault.jpg"
 import { NavLink } from "react-router-dom"
 const Users = (params) => {
 
-
     let props = params.props
-
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
     let pages = []
@@ -17,6 +15,7 @@ const Users = (params) => {
     return <div>
         <div className={c.pagesCount}>
             {pages.map((e, i) => {
+                
                 return <div className={props.currentPage === e && c.active} onClick={() => params.changePage(e)} key={i}>{e}</div>
             })}
         </div>

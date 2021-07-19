@@ -8,7 +8,7 @@ class UsersClass extends React.Component {
 
     constructor(props) {
         super(props);
-
+        
     }
     componentDidMount() {
 
@@ -24,6 +24,7 @@ class UsersClass extends React.Component {
         }
     }
     changePage(pageNumber) {
+        
         this.props.setIsFetching(true)
         this.props.setPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)

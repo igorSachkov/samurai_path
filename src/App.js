@@ -1,5 +1,5 @@
 import './App.css'
-import Header from "./Content/Header/Header"
+import HeaderClass from "./Content/Header/HeaderClass"
 import NavAside from './Content/NavAside/NavAside';
 import ProfileCardContainer from './Content/MainContent/ProfileCard/ProfileCardContainer';
 import DialogsContainer from './Content/MainContent/Dialogs/DialogsContainer';
@@ -18,10 +18,10 @@ function App(props) {
     <BrowserRouter>
       <Provider store={props.store}>
         <div className="wrapper">
-          <Header></Header>
+          <HeaderClass />
           <NavAside></NavAside>
           <div className="main-container">
-            <Route path="/profile" render={() => <ProfileCardContainer />} />
+            <Route path="/profile/:userId" render={() => <ProfileCardContainer />} />
             <Route path="/dialogs" render={() => <DialogsContainer />} />
             <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/news" component={News} />

@@ -3,7 +3,8 @@ let initialStore = {
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    toggleIsFollowing: []
 
 }
 
@@ -57,6 +58,13 @@ export const usersReducer = (state = initialStore, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case "TOGGLE-FOLLOW-UNFOLLOW":
+            return {
+                ...state,
+                toggleIsFollowing: action.isFetching 
+                ? [...state.toggleIsFollowing, action.userId] 
+                : state.toggleIsFollowing.filter(id => id != action.userId)
+            }
         default:
             return state
     }
@@ -67,3 +75,4 @@ export const setUsers = (values) => ({ type: "SET-USERS", users: values })
 export const setPage = (value) => ({ type: "SET-CURRENT-PAGE", page: value })
 export const setTotalUsersCount = (value) => ({ type: "SET-TOTAL-USERS-COUNT", totalUsersCount: value })
 export const setIsFetching = (isFetching) => ({ type: "SET-IS-FETCHING", isFetching })
+export const toggleFollowUnfollow = (isFetching, userId) => ({ type: "TOGGLE-FOLLOW-UNFOLLOW", isFetching, userId })

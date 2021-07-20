@@ -13,7 +13,6 @@ const MobileFooter = function () {
             <div className={c.musicBtn}>
                 <img src={MusicIcon}></img>
             </div>
-
         </div>
 
     )

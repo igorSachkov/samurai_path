@@ -1,6 +1,6 @@
 import UsersClass from "./UsersClass"
 import { connect } from "react-redux";
-import {follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching} from "../../redux/usersReducer"
+import {follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching, toggleFollowUnfollow} from "../../redux/usersReducer"
 
 let mapStateToProps = (state) => {
     
@@ -9,12 +9,13 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        toggleIsFollowing: state.usersPage.toggleIsFollowing
     }
 }
 
 const UsersContainer = connect(mapStateToProps, {
-    follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching
+    follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching, toggleFollowUnfollow
 })(UsersClass)
 
 export default UsersContainer;

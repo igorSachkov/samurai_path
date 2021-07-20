@@ -1,6 +1,6 @@
-import * as axios from "axios"
-import Users from "./Users"
 
+import Users from "./Users"
+import { getUsers } from "../../api/api";
 import React from "react"
 import Preloader from "../Common/Preloader";
 
@@ -8,18 +8,17 @@ class UsersClass extends React.Component {
 
     constructor(props) {
         super(props);
-        
+        this.changePage = this.changePage.bind(this)
     }
     componentDidMount() {
 
         if (this.props.users.length === 0) {
             this.props.setIsFetching(true)
-            let promise = axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-            { withCredentials: true})
-            promise.then(response => {
+            getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
                 this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setUsers(data.items)
+                this.props.setTotalUsersCount(data.totalCount)
             })
 
         }
@@ -28,11 +27,11 @@ class UsersClass extends React.Component {
         
         this.props.setIsFetching(true)
         this.props.setPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
-        { withCredentials: true})
-            .then(response => {
+        
+        getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
                 this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(data.items)
             })
     }
 
@@ -40,7 +39,7 @@ class UsersClass extends React.Component {
         
 
         return (<div> {this.props.isFetching && <Preloader />}
-            <Users props={this.props} changePage={this.changePage} />
+            <Users {...this.props} changePage={this.changePage} />
         </div>
         )
     }

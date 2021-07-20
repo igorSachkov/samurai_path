@@ -2,10 +2,9 @@
 import c from "./Users.module.css"
 import userDefaultAvatar from "../Images/userDefault.jpg"
 import { NavLink } from "react-router-dom"
-import axios from "axios"
-const Users = (params) => {
+import { follow, unfollow } from "../../api/api"
+const Users = (props) => {
 
-    let props = params.props
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
     let pages = []
@@ -17,7 +16,7 @@ const Users = (params) => {
         <div className={c.pagesCount}>
             {pages.map((e, i) => {
 
-                return <div className={props.currentPage === e && c.active} onClick={() => params.changePage(e)} key={i}>{e}</div>
+                return <div className={props.currentPage === e && c.active} onClick={() => props.changePage(e)} key={i}>{e}</div>
             })}
         </div>
 
@@ -35,20 +34,26 @@ const Users = (params) => {
                         </NavLink>
                         <div className={c.btnWrapper}>
                             {e.followed
-                                ? <button onClick={() => {
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${e.id}`, { withCredentials: true, headers: {"API-KEY": "41823454-5c69-4ffd-9e94-f07cc8d73f73"} })
-                                        .then(response => {
-                                            if (response.data.resultCode === 0) {
-                                                
-                                                props.unfollow(e.id)
-                                            }})}}>unfollow</button>
-                                : <button onClick={() => {
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${e.id}`, {}, { withCredentials: true, headers: {"API-KEY": "41823454-5c69-4ffd-9e94-f07cc8d73f73"} })
-                                        .then(response => {
-                                            if (response.data.resultCode === 0) {
-                                                
-                                                props.follow(e.id)
-                                            } })}}>follow</button>}
+                                ? <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => {
+                                    props.toggleFollowUnfollow(true, e.id);
+                                    unfollow(e.id).then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.unfollow(e.id)
+                                        }
+                                        props.toggleFollowUnfollow(false, e.id)
+                                    })
+                                }
+                                }>unfollow</button>
+                                : <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => {
+                                     props.toggleFollowUnfollow(true, e.id);
+                                    follow(e.id).then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.follow(e.id)
+                                        }
+                                        props.toggleFollowUnfollow(false, e.id)
+                                    })
+                                }
+                                }>follow</button>}
                         </div>
                     </div>
                     <div className={c.profileSecondWrapper}>

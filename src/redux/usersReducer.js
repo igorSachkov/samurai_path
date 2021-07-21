@@ -1,3 +1,7 @@
+import { getUsers } from "./../api/api"
+
+
+
 let initialStore = {
     users: [],
     pageSize: 5,
@@ -76,3 +80,16 @@ export const setPage = (value) => ({ type: "SET-CURRENT-PAGE", page: value })
 export const setTotalUsersCount = (value) => ({ type: "SET-TOTAL-USERS-COUNT", totalUsersCount: value })
 export const setIsFetching = (isFetching) => ({ type: "SET-IS-FETCHING", isFetching })
 export const toggleFollowUnfollow = (isFetching, userId) => ({ type: "TOGGLE-FOLLOW-UNFOLLOW", isFetching, userId })
+
+export const getUsersThunkCreator = (currentPage, pageSize)=> {
+    return (dispatch)=> {
+        
+        dispatch(setIsFetching(true))
+        getUsers(currentPage, pageSize)
+        .then(data => {
+            dispatch(setIsFetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setTotalUsersCount(data.totalCount))
+        })
+    }
+}

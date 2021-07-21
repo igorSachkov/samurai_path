@@ -1,6 +1,6 @@
 import UsersClass from "./UsersClass"
 import { connect } from "react-redux";
-import {follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching, toggleFollowUnfollow} from "../../redux/usersReducer"
+import {follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching, toggleFollowUnfollow, getUsersThunkCreator} from "../../redux/usersReducer"
 
 let mapStateToProps = (state) => {
     
@@ -15,7 +15,7 @@ let mapStateToProps = (state) => {
 }
 
 const UsersContainer = connect(mapStateToProps, {
-    follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching, toggleFollowUnfollow
+    follow, unfollow, setUsers, setPage, setTotalUsersCount, setIsFetching, toggleFollowUnfollow, getUsersThunkCreator
 })(UsersClass)
 
 export default UsersContainer;

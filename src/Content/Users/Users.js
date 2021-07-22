@@ -2,7 +2,7 @@
 import c from "./Users.module.css"
 import userDefaultAvatar from "../Images/userDefault.jpg"
 import { NavLink } from "react-router-dom"
-import { follow, unfollow } from "../../api/api"
+import { Redirect } from "react-router"
 const Users = (props) => {
 
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -34,26 +34,8 @@ const Users = (props) => {
                         </NavLink>
                         <div className={c.btnWrapper}>
                             {e.followed
-                                ? <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => {
-                                    props.toggleFollowUnfollow(true, e.id);
-                                    unfollow(e.id).then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.unfollow(e.id)
-                                        }
-                                        props.toggleFollowUnfollow(false, e.id)
-                                    })
-                                }
-                                }>unfollow</button>
-                                : <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => {
-                                     props.toggleFollowUnfollow(true, e.id);
-                                    follow(e.id).then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.follow(e.id)
-                                        }
-                                        props.toggleFollowUnfollow(false, e.id)
-                                    })
-                                }
-                                }>follow</button>}
+                                ? <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => {props.unfollowThunk(e.id)}}>unfollow</button>
+                                : <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => { props.followThunk(e.id)}}>follow</button>}
                         </div>
                     </div>
                     <div className={c.profileSecondWrapper}>

@@ -1,3 +1,6 @@
+import { userApi } from "./../api/api"
+
+
 let initialStore = {
     mainProfile: {
         profileName: "Кирилл Левобережный",
@@ -15,7 +18,7 @@ let initialStore = {
         { id: "4", avatar: "https://image.freepik.com/free-photo/african-american-handsome-man-isolated-pink-background-shouting-through-megaphone-pointing-side_1368-213685.jpg", name: "Григорий", status: "online" },
         { id: "5", avatar: "https://image.freepik.com/free-photo/handsome-freelancer-man-holding-laptop-smiling-standing-happy-light-turquoise-wall_1258-23916.jpg", name: "Артем", status: "online" }
     ],
-    
+
     profile: null
 }
 
@@ -55,4 +58,13 @@ export const profileReducer = (state = initialStore, action) => {
 }
 export const updateProfileChangeStatusTextArea = (value) => ({ type: "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA", text: value })
 export const changeProfileStatus = () => ({ type: "CHANGE-PROFILE-STATUS" })
-export const setUserProfile = (profile) => ({ type: "SET-USER-PROFILE", profile })
+const setUserProfile = (profile) => ({ type: "SET-USER-PROFILE", profile })
+
+export const getUserProfileThunk = (userId) => {
+    return (dispatch) => {
+        userApi.getUser(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data))
+            })
+    }
+}

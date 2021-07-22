@@ -1,4 +1,4 @@
-import { getUsers } from "./../api/api"
+import { userApi } from "./../api/api"
 
 
 
@@ -65,9 +65,9 @@ export const usersReducer = (state = initialStore, action) => {
         case "TOGGLE-FOLLOW-UNFOLLOW":
             return {
                 ...state,
-                toggleIsFollowing: action.isFetching 
-                ? [...state.toggleIsFollowing, action.userId] 
-                : state.toggleIsFollowing.filter(id => id != action.userId)
+                toggleIsFollowing: action.isFetching
+                    ? [...state.toggleIsFollowing, action.userId]
+                    : state.toggleIsFollowing.filter(id => id != action.userId)
             }
         default:
             return state
@@ -81,15 +81,41 @@ export const setTotalUsersCount = (value) => ({ type: "SET-TOTAL-USERS-COUNT", t
 export const setIsFetching = (isFetching) => ({ type: "SET-IS-FETCHING", isFetching })
 export const toggleFollowUnfollow = (isFetching, userId) => ({ type: "TOGGLE-FOLLOW-UNFOLLOW", isFetching, userId })
 
-export const getUsersThunkCreator = (currentPage, pageSize)=> {
-    return (dispatch)=> {
-        
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return (dispatch) => {
+
         dispatch(setIsFetching(true))
-        getUsers(currentPage, pageSize)
-        .then(data => {
-            dispatch(setIsFetching(false))
-            dispatch(setUsers(data.items))
-            dispatch(setTotalUsersCount(data.totalCount))
-        })
+        userApi.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(setIsFetching(false))
+                dispatch(setUsers(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            })
+    }
+}
+
+export const followThunk = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowUnfollow(true, userId))
+        userApi.follow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(follow(userId))
+                    
+                }
+                dispatch(toggleFollowUnfollow(false, userId))
+            })
+    }
+}
+export const unfollowThunk = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowUnfollow(true, userId))
+        userApi.unfollow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollow(userId))
+                }
+                dispatch(toggleFollowUnfollow(false, userId))
+            })
     }
 }

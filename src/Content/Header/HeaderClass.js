@@ -1,9 +1,7 @@
 import React from "react"
 import Header from "./Header"
-import axios from "axios"
 import { connect } from "react-redux"
-import {setUserData} from "./../../redux/authReducer"
-import { auth } from "../../api/api"
+import { getAuthUserDataThunk} from "./../../redux/authReducer"
 class HeaderClass extends React.Component {
     constructor(props) {
         super(props)
@@ -14,14 +12,7 @@ class HeaderClass extends React.Component {
         )
     }
     componentDidMount() {
-        auth()
-        .then(data => {
-            if(data.resultCode === 0) {
-                this.props.setUserData(data.data)
-            }
-
-            
-        })
+        this.props.getAuthUserDataThunk()
     }
 }
 const mapStateToProps = (state)=> ({
@@ -33,5 +24,5 @@ const mapStateToProps = (state)=> ({
 
 
 export default connect (mapStateToProps, {
-    setUserData
+    getAuthUserDataThunk
 }) (HeaderClass)

@@ -21,9 +21,16 @@ export const userApi = {
         
         return instance.post(`follow/${id}`)
     },
-
+}
+export const profileApi = {
     getUser: (id) => {
         return instance.get(`profile/${id}`)
+    },
+    getStatus: (id) => {
+        return instance.get(`profile/status/${id}`)
+    },
+    updateStatus: (status) => {
+        return instance.put(`profile/status`, {status})
     }
 }
 export const authApi = {

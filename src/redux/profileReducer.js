@@ -1,13 +1,13 @@
-import { userApi } from "./../api/api"
+import { profileApi } from "./../api/api"
 
 
 let initialStore = {
+    status: "default",
     mainProfile: {
         profileName: "Кирилл Левобережный",
         avatar: "https://image.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg",
         mail: "kirill@mail.ru",
         background: "https://image.freepik.com/free-vector/misty-landscape-with-fog-pine-forest-mountain-slopes-illustration-nature-scene_1150-37301.jpg",
-        status: "Я успешен, богат и красив, вот!",
         posts: [{ id: 1, name: "Kristina", post: "So big, wow." }, { id: 2, name: "Boris", post: "King of all mans" }],
         profileChangeStatusTextArea: ""
     },
@@ -31,18 +31,15 @@ export const profileReducer = (state = initialStore, action) => {
 
     switch (action.type) {
         case "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA":
-
-
-            stateCopy.mainProfile.profileChangeStatusTextArea = action.text;
-
-            return stateCopy;
-
+            return {
+                ...state,
+                mainProfile: { ...state.mainProfile, profileChangeStatusTextArea: action.text }
+            }
         case "CHANGE-PROFILE-STATUS":
-
-
-            stateCopy.mainProfile.status = state.mainProfile.profileChangeStatusTextArea;
-            stateCopy.mainProfile.profileChangeStatusTextArea = "";
-            return stateCopy;
+            return {
+                ...state,
+                status: state.mainProfile.profileChangeStatusTextArea
+            }
 
         case "SET-USER-PROFILE":
 
@@ -50,7 +47,16 @@ export const profileReducer = (state = initialStore, action) => {
                 ...state,
                 profile: action.profile
             }
+        case "GET-PROFILE-STATUS":
 
+            return {
+                ...state,
+                status: action.status
+            }
+        case "REFRESH-PAGE":
+            return {
+                ...state
+            }
         default:
             return state;
 
@@ -59,12 +65,31 @@ export const profileReducer = (state = initialStore, action) => {
 export const updateProfileChangeStatusTextArea = (value) => ({ type: "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA", text: value })
 export const changeProfileStatus = () => ({ type: "CHANGE-PROFILE-STATUS" })
 const setUserProfile = (profile) => ({ type: "SET-USER-PROFILE", profile })
+const getProfileStatusAC = (status) => ({ type: "GET-PROFILE-STATUS", status })
 
 export const getUserProfileThunk = (userId) => {
     return (dispatch) => {
-        userApi.getUser(userId)
+        profileApi.getUser(userId)
             .then(response => {
                 dispatch(setUserProfile(response.data))
+            })
+    }
+}
+export const getProfileStatusThunk = (userId) => {
+    return (dispatch) => {
+        profileApi.getStatus(userId)
+            .then(status => {
+                dispatch(getProfileStatusAC(status.data))
+            })
+    }
+}
+export const updateProfileStatusThunk = (status) => {
+    return (dispatch) => {
+        profileApi.updateStatus(status)
+            .then(response=> {
+                if(response.data.resultCode === 0) {
+                    dispatch(getProfileStatusAC(status))
+                }
             })
     }
 }

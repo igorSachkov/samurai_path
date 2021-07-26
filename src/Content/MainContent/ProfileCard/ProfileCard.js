@@ -1,12 +1,9 @@
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
-import ProfileMain from "./ProfileMain/ProfileMain";
+import ProfileStatus from "./ProfileMain/ProfileStatus";
 import ProfilePagePost from "./ProfilePagePost/ProfilePagePost";
 import ProfileSideBar from "./ProfileSideBar/ProfileSideBar";
 import c from "./ProfileCard.module.css"
 import Preloader from "./../../Common/Preloader"
-import { Redirect } from "react-router";
-
-
 
 const ProfileCard = function (props) {
 
@@ -18,7 +15,9 @@ const ProfileCard = function (props) {
         <div>
             <ProfileHeader mainProfile={props.mainProfile} profile={props.profile}/>
             <div className={c.profileMain}>
-                <ProfileMain mainProfile={props.mainProfile} changeProfileStatus={props.changeProfileStatus} updateProfileChangeStatusTextArea={props.updateProfileChangeStatusTextArea}/>
+                <ProfileStatus updateProfileStatusThunk={props.updateProfileStatusThunk} profileId={props.profileId} getProfileStatusThunk={props.getProfileStatusThunk} 
+                status={props.status} mainProfile={props.mainProfile} changeProfileStatus={props.changeProfileStatus} 
+                updateProfileChangeStatusTextArea={props.updateProfileChangeStatusTextArea}/>
                 <ProfilePagePost mainProfile={props.mainProfile} />
             </div>
 

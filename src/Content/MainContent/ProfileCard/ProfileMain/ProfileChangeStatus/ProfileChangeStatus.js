@@ -1,26 +1,29 @@
 import React from "react"
-
-
 const ProfileChangeStatus = (props) => {
     
     let changeProfileStatusTextArea = React.createRef()
 
-    let addMessage = () => {
-        props.changeProfileStatus()
+    let changeStatus = () => {
+        let text = changeProfileStatusTextArea.current.value
+        props.updateProfileStatusThunk(text)
+        props.deactivateModeChange()
 
     }
-    let changeTextArea = () => {
+    let changeTextArea = (e) => {
+        props.changeTextArea(e.currentTarget.value)
+
+        }
         
-        let text = changeProfileStatusTextArea.current.value
-        props.updateProfileChangeStatusTextArea(text)
-    }
+        // let text = changeProfileStatusTextArea.current.value
+        // props.updateProfileChangeStatusTextArea(text)
+    
     return (
         <div>
             <div>
-                <textarea ref={changeProfileStatusTextArea} value={props.mainProfile.profileChangeStatusTextArea} onChange={changeTextArea} />
+                <textarea autoFocus={true} placeholder={props.status} ref={changeProfileStatusTextArea} value={props.status} onChange={changeTextArea} />
             </div>
             <div>
-                <button onClick={addMessage}>Изменить статус</button>
+                <button onClick={()=>changeStatus()}>Изменить статус</button>
             </div>
         </div>
     )

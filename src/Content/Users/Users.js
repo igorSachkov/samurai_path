@@ -2,7 +2,6 @@
 import c from "./Users.module.css"
 import userDefaultAvatar from "../Images/userDefault.jpg"
 import { NavLink } from "react-router-dom"
-import { Redirect } from "react-router"
 const Users = (props) => {
 
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -21,6 +20,7 @@ const Users = (props) => {
         </div>
 
         {props.users.map(e => {
+            
 
             return (
                 <div key={e.id} className={c.profileContainer}>

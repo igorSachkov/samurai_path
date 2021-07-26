@@ -12,11 +12,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
-
-
-
-
 // class Users {
 //   constructor(props) {
 //       this.name = props.name

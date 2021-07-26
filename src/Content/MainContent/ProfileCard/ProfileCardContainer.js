@@ -1,7 +1,7 @@
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { changeProfileStatus, updateProfileChangeStatusTextArea, getUserProfileThunk } from "../../../redux/profileReducer"
+import { changeProfileStatus, updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk } from "../../../redux/profileReducer"
 import React from "react"
 import ProfileCard from "./ProfileCard"
 import  withAuthRedirect  from "../../../HOC/withAuthRedirect";
@@ -13,18 +13,18 @@ class ProfileClass extends React.Component {
         super(props)
     }
     componentDidMount() {
+        
         this.props.getUserProfileThunk(this.props.match.params.userId)
     }
     render() {
         return (
-            <ProfileCard {...this.props} />
+            <ProfileCard {...this.props} profileId={this.props.match.params.userId}/>
         )
     }
 }
-
-
 const mapStateToProps = (state) => {
     return {
+        status: state.profilePage.status,
         mainProfile: state.profilePage.mainProfile,
         friends: state.profilePage.friends,
         isFetching: state.profilePage.isFetching,
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        changeProfileStatus, updateProfileChangeStatusTextArea, getUserProfileThunk
+        changeProfileStatus, updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk
     }),
     withAuthRedirect,
     withRouter

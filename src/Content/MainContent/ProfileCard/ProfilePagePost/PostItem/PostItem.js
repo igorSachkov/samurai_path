@@ -2,7 +2,7 @@
 
 
 const PostItem = function(props) {
-
+    
 
     let post = props.mainProfile.posts.map((post)=> {
         return (

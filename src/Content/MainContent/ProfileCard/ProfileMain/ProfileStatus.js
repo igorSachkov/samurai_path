@@ -7,6 +7,10 @@ class ProfileStatus extends React.Component {
     
     this.props.getProfileStatusThunk(this.props.profileId)
   }
+  componentDidUpdate(prevProps, prevState) {
+    let a =this.props
+    let b = this.state
+  }
   state = {
     editMode: false,
     status: this.props.status
@@ -34,7 +38,7 @@ class ProfileStatus extends React.Component {
           <div onClick={() => this.activateModeChange()}>{this.props.status}</div>
         </div>}
         {this.state.editMode && <ProfileChangeStatus deactivateModeChange={this.deactivateModeChange} mainProfile={this.props.mainProfile} 
-        changeProfileStatus={this.props.changeProfileStatus} updateProfileChangeStatusTextArea={this.props.updateProfileChangeStatusTextArea} status={this.status}
+        changeProfileStatus={this.props.changeProfileStatus} updateProfileChangeStatusTextArea={this.props.updateProfileChangeStatusTextArea} status={this.state.status}
         updateProfileStatusThunk={this.props.updateProfileStatusThunk} changeTextArea={this.changeTextArea}
         />}
       </div>

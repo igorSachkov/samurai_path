@@ -1,7 +1,9 @@
 import {Field, reduxForm} from "redux-form"
+import { connect } from "react-redux";
 
 
 const LoginForm = (props) => {
+    
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -23,12 +25,19 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({
     form: 'login'
   })(LoginForm)
+const mapStateToProps = (state)=> {
+    
+}
+const LoginFormReduxConnect = connect(mapStateToProps, {})(LoginReduxForm)
 
 export const Login = () => {
+    const onSubmit = (object) => {
+        console.log(object)
+    }
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm />
+            <LoginFormReduxConnect onSubmit={onSubmit}/>
         </div>
     )
 }

@@ -1,17 +1,16 @@
 import c from "./Dialogs.module.css"
 import DialogsSideBar from "./DialogsSideBar/DialogsSideBar"
-import SendADialog from "./SendADialog/SendADialog"
+import DialogForm from "./DialogForm/DialogForm"
 import DialogItem from "./DialogItem/DialogItem"
 import PropTypes from 'prop-types'
 
 
 
 const Dialogs = function (props) {
-
-    const logColor = (title, color)=> {
-        console.log(`New Color: ${title} | ${color}`)
+    const addMessage = (object) => {
+        props.addDialogMessage(object.message)
+        console.log(object);
     }
-
     return (
 
         <div>
@@ -19,7 +18,7 @@ const Dialogs = function (props) {
                 <div className={c.messages}>
                     <DialogItem dialogs={props.dialogs} />
                 </div>
-                <SendADialog updateDialogTextArea={props.updateDialogTextArea} addDialogMessage={props.addDialogMessage} dialogTextArea={props.dialogTextArea}></SendADialog>
+                <DialogForm onSubmit={addMessage}/>
 
             </div>
             <div className={c.dialogSideBar}>

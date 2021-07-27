@@ -16,26 +16,15 @@ let initialStore = {
 
 
 export const dialogReducer = (state = initialStore, action) => {
-    let stateCopy = {
-        ...state
-    }
     switch (action.type) {
-        
         case "ADD-DIALOG_MESSAGE": 
-
-            let dialogMessagesLength = state.dialogMessages.length + 1;
-            stateCopy.dialogMessages.push({ id: dialogMessagesLength, author: "Author", message: state.dialogTextArea })
-            stateCopy.dialogTextArea = ""
-            return stateCopy
-        
-        case "UPDATE-DIALOG-TEXT-AREA":
-
-            stateCopy.dialogTextArea = action.text;
-            return stateCopy
+            return {
+                ...state,
+                dialogMessages: [...state.dialogMessages, {id: state.dialogMessages.length + 1, author: `Author`, message: action.message}]
+            }
         default:
             return state
     }
 }
 
-export const addDialogMessage = () => ({ type: "ADD-DIALOG_MESSAGE" })
-export const updateDialogTextArea = (value) => ({ type: "UPDATE-DIALOG-TEXT-AREA", text: value })
+export const addDialogMessage = (message) => ({ type: "ADD-DIALOG_MESSAGE", message })

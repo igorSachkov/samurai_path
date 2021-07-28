@@ -10,7 +10,7 @@ import Settings from './Content/MainContent/Settings/Settings';
 import MobileFooter from './Content/MobileFooter/MobileFooter';
 import {Provider} from "react-redux"
 import UsersContainer from './Content/Users/UsersContainer';
-import { Login } from './Content/Login/Login';
+import {LoginAuth as Login} from './Content/Login/Login';
 
 
 function App(props) { 

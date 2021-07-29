@@ -4,6 +4,7 @@ import ProfilePagePost from "./ProfilePagePost/ProfilePagePost";
 import ProfileSideBar from "./ProfileSideBar/ProfileSideBar";
 import c from "./ProfileCard.module.css"
 import Preloader from "./../../Common/Preloader"
+import ProfileStatusWithHooks from "./ProfileMain/ProfileStatusWithHooks";
 
 const ProfileCard = function (props) {
 
@@ -15,7 +16,7 @@ const ProfileCard = function (props) {
         <div>
             <ProfileHeader mainProfile={props.mainProfile} profile={props.profile}/>
             <div className={c.profileMain}>
-                <ProfileStatus updateProfileStatusThunk={props.updateProfileStatusThunk} profileId={props.profileId} getProfileStatusThunk={props.getProfileStatusThunk} 
+                <ProfileStatusWithHooks updateProfileStatusThunk={props.updateProfileStatusThunk} profileId={props.profileId} getProfileStatusThunk={props.getProfileStatusThunk} 
                 status={props.status} mainProfile={props.mainProfile} changeProfileStatus={props.changeProfileStatus} 
                 updateProfileChangeStatusTextArea={props.updateProfileChangeStatusTextArea}/>
                 <ProfilePagePost mainProfile={props.mainProfile} />

@@ -18,12 +18,14 @@ import Preloader from './Content/Common/Preloader';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    
   }
   componentDidMount() {
     this.props.initializeApp()
   }
 
   render() {
+    
     if(!this.props.initialized) {
       return <Preloader />
     }
@@ -33,9 +35,10 @@ class App extends React.Component {
     } = this;
 
     return (
+      
 
       <BrowserRouter>
-        <Provider store={props.store}>
+        <Provider store={this.props.store}>
           <div className="wrapper">
             <HeaderClass />
             <NavAside></NavAside>

@@ -12,9 +12,6 @@ class HeaderClass extends React.Component {
             <Header {...this.props} />
         )
     }
-    componentDidMount() {
-        this.props.getAuthUserDataThunk()
-    }
 }
 const mapStateToProps = (state)=> ({
     isAuth: state.auth.isAuth,
@@ -25,5 +22,5 @@ const mapStateToProps = (state)=> ({
 
 
 export default connect (mapStateToProps, {
-    getAuthUserDataThunk, logoutThunk
+     logoutThunk
 }) (HeaderClass)

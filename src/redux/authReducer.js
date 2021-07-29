@@ -28,14 +28,17 @@ export const authReducer = (state = initialStore, action) => {
 }
 export const setUserData = (data, isAuth) => ({ type: "SET-USER-DATA", data, isAuth })
 
-export const getAuthUserDataThunk = () => {
-    return (dispatch) => authApi.me()
-        .then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setUserData(data.data, true))
+export const getAuthUserDataThunk = () => (dispatch) => {
+    return authApi.me()
+        .then(response => {
+            
+            if (response.resultCode === 0) {
+                dispatch(setUserData(response.data, true))
             }
         })
+
 }
+
 export const loginThunk = (email, password, rememberMe) => {
     return (dispatch) => authApi.login(email, password, rememberMe)
         .then(data => {

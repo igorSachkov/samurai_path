@@ -1,6 +1,6 @@
 import c from "./ProfileMain.module.css"
 import ProfileChangeStatus from "./ProfileChangeStatus/ProfileChangeStatus"
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 
 
 
@@ -10,6 +10,7 @@ import React, {useState} from "react"
 const ProfileStatusWithHooks =(props) => {
     const [state, setState] = useState(false);
     const [status, setStatus] = useState(props.status);
+    
 
     const activateModeChange = () => {
       setState(true)
@@ -22,6 +23,10 @@ const ProfileStatusWithHooks =(props) => {
     const changeTextArea = (value)=> {
       setStatus(value)
     }
+    
+    useEffect(() => {
+      setStatus(props.status)
+    }, [props.status]);
 
     return (
       <div>

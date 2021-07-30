@@ -17,7 +17,7 @@ const ProfileChangeStatus = (props) => {
     return (
         <div>
             <div>
-                <textarea autoFocus={true} placeholder={props.status} ref={changeProfileStatusTextArea} value={props.status} onChange={changeTextArea} />
+                <textarea autoFocus={true} placeholder={props.status} ref={changeProfileStatusTextArea}  onChange={changeTextArea} />
             </div>
             <div>
                 <button onClick={() => changeStatus()}>Изменить статус</button>

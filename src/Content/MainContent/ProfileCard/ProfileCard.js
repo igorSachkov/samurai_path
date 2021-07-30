@@ -1,5 +1,4 @@
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
-import ProfileStatus from "./ProfileMain/ProfileStatus";
 import ProfilePagePost from "./ProfilePagePost/ProfilePagePost";
 import ProfileSideBar from "./ProfileSideBar/ProfileSideBar";
 import c from "./ProfileCard.module.css"

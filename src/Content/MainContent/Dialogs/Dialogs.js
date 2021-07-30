@@ -9,7 +9,6 @@ import PropTypes from 'prop-types'
 const Dialogs = function (props) {
     const addMessage = (object) => {
         props.addDialogMessage(object.message)
-        console.log(object);
     }
     return (
 

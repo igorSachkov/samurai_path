@@ -2,7 +2,7 @@ import { profileApi } from "./../api/api"
 
 
 let initialStore = {
-    status: "default",
+    status: "",
     mainProfile: {
         profileName: "Кирилл Левобережный",
         avatar: "https://image.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg",
@@ -24,11 +24,6 @@ let initialStore = {
 
 
 export const profileReducer = (state = initialStore, action) => {
-    let stateCopy = {
-        ...state,
-        mainProfile: { ...state.mainProfile }
-    }
-
     switch (action.type) {
         case "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA":
             return {

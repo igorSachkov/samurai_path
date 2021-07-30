@@ -8,6 +8,7 @@ import React, {useState, useEffect} from "react"
 
 
 const ProfileStatusWithHooks =(props) => {
+  
     const [state, setState] = useState(false);
     const [status, setStatus] = useState(props.status);
     
@@ -33,7 +34,8 @@ const ProfileStatusWithHooks =(props) => {
         {!state && <div className={c.profile}>
           <div onClick={activateModeChange}>*{props.status}*</div>
         </div>}
-        {state && <ProfileChangeStatus deactivateModeChange={deactivateModeChange} updateProfileStatusThunk={props.updateProfileStatusThunk}
+        {state && <ProfileChangeStatus 
+        deactivateModeChange={deactivateModeChange} updateProfileStatusThunk={props.updateProfileStatusThunk}
         changeTextArea={props.changeTextArea} status={status} changeTextArea={changeTextArea}
         />}
       </div>

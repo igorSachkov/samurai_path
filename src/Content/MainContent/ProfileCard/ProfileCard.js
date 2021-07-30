@@ -15,8 +15,9 @@ const ProfileCard = function (props) {
         <div>
             <ProfileHeader mainProfile={props.mainProfile} profile={props.profile}/>
             <div className={c.profileMain}>
-                <ProfileStatusWithHooks updateProfileStatusThunk={props.updateProfileStatusThunk} profileId={props.profileId} getProfileStatusThunk={props.getProfileStatusThunk} 
-                status={props.status} mainProfile={props.mainProfile} changeProfileStatus={props.changeProfileStatus} 
+                <ProfileStatusWithHooks 
+                updateProfileStatusThunk={props.updateProfileStatusThunk} profileId={props.profileId} 
+                getProfileStatusThunk={props.getProfileStatusThunk} status={props.status} mainProfile={props.mainProfile} 
                 updateProfileChangeStatusTextArea={props.updateProfileChangeStatusTextArea}/>
                 <ProfilePagePost mainProfile={props.mainProfile} />
             </div>

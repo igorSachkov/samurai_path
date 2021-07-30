@@ -1,7 +1,7 @@
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { changeProfileStatus, updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk } from "../../../redux/profileReducer"
+import { updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk } from "../../../redux/profileReducer"
 import React from "react"
 import ProfileCard from "./ProfileCard"
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
@@ -13,7 +13,6 @@ class ProfileClass extends React.Component {
         super(props)
     }
     componentDidMount() {
-
         let userId = this.props.match.params.userId
         if (!userId) userId = this.props.userId
         this.props.getUserProfileThunk(userId)
@@ -39,7 +38,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        changeProfileStatus, updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk
+        updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk
     }),
     withAuthRedirect,
     withRouter

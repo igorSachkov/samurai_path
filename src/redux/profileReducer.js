@@ -1,15 +1,12 @@
 import { profileApi } from "./../api/api"
 
-
+////убрать mainProfile
 let initialStore = {
     status: "",
     mainProfile: {
-        profileName: "Кирилл Левобережный",
         avatar: "https://image.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg",
-        mail: "kirill@mail.ru",
         background: "https://image.freepik.com/free-vector/misty-landscape-with-fog-pine-forest-mountain-slopes-illustration-nature-scene_1150-37301.jpg",
         posts: [{ id: 1, name: "Kristina", post: "So big, wow." }, { id: 2, name: "Boris", post: "King of all mans" }],
-        profileChangeStatusTextArea: ""
     },
     friends: [
         { id: "1", avatar: "https://image.freepik.com/free-photo/handsome-young-man-pink-shirt-isolated-blue-wall-laughing_1368-55070.jpg", name: "Кирилл", status: "online" },
@@ -18,7 +15,6 @@ let initialStore = {
         { id: "4", avatar: "https://image.freepik.com/free-photo/african-american-handsome-man-isolated-pink-background-shouting-through-megaphone-pointing-side_1368-213685.jpg", name: "Григорий", status: "online" },
         { id: "5", avatar: "https://image.freepik.com/free-photo/handsome-freelancer-man-holding-laptop-smiling-standing-happy-light-turquoise-wall_1258-23916.jpg", name: "Артем", status: "online" }
     ],
-
     profile: null
 }
 
@@ -29,11 +25,6 @@ export const profileReducer = (state = initialStore, action) => {
             return {
                 ...state,
                 mainProfile: { ...state.mainProfile, profileChangeStatusTextArea: action.text }
-            }
-        case "CHANGE-PROFILE-STATUS":
-            return {
-                ...state,
-                status: state.mainProfile.profileChangeStatusTextArea
             }
 
         case "SET-USER-PROFILE":
@@ -58,7 +49,6 @@ export const profileReducer = (state = initialStore, action) => {
     }
 }
 export const updateProfileChangeStatusTextArea = (value) => ({ type: "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA", text: value })
-export const changeProfileStatus = () => ({ type: "CHANGE-PROFILE-STATUS" })
 const setUserProfile = (profile) => ({ type: "SET-USER-PROFILE", profile })
 const getProfileStatusAC = (status) => ({ type: "GET-PROFILE-STATUS", status })
 

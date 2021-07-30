@@ -1,31 +1,27 @@
 import React from "react"
+import { Field, reduxForm } from "redux-form"
+import {TextArea} from "./../../../../Common/FormControls"
+
 const ProfileChangeStatus = (props) => {
-    
-
-    let changeProfileStatusTextArea = React.createRef()
-
-    let changeStatus = () => {
-        let text = changeProfileStatusTextArea.current.value
-        props.updateProfileStatusThunk(text)
-        props.deactivateModeChange()
-
-    }
-    let changeTextArea = (e) => {
-        props.changeTextArea(e.currentTarget.value)
-
-    }
-
+ 
     return (
-        <div>
+        <form onSubmit={props.handleSubmit}>
             <div>
-                <textarea autoFocus={true} placeholder={props.status} ref={changeProfileStatusTextArea}  onChange={changeTextArea} />
+                <Field 
+                name={`profileStatus`} component={TextArea} 
+                autoFocus={true} placeholder={props.status} 
+                />
             </div>
             <div>
-                <button onClick={() => changeStatus()}>Изменить статус</button>
+                <button>Изменить статус</button>
             </div>
-        </div>
+        </form>
     )
 }
 
+const changeStatusForm = reduxForm({
+    form: "profileStatus"
+})(ProfileChangeStatus)
 
-export default ProfileChangeStatus
+
+export default changeStatusForm

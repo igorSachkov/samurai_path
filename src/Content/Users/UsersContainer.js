@@ -7,7 +7,7 @@ import withAuthRedirect from "../../HOC/withAuthRedirect";
 import { compose } from "redux";
 
 
-const UsersClass = (props) => {
+const UsersContainer = (props) => {
 
     useEffect(() => {
         if (props.users.length === 0) {
@@ -42,4 +42,4 @@ export default compose(
         follow, unfollow, getUsersThunkCreator, setPage, followThunk, unfollowThunk
     }),
     withAuthRedirect
-)(UsersClass)
+)(UsersContainer)

@@ -1,8 +1,7 @@
 import c from "./ProfileHeader.module.css"
 import userDefault from "./../../../Images/userDefault.jpg"
 
-const ProfileHeader = function (props) {
-    
+const ProfileHeader = (props) => {
 
     return (
         <div>

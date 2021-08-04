@@ -11,57 +11,44 @@ import MobileFooter from './Content/MobileFooter/MobileFooter';
 import { connect, Provider } from "react-redux"
 import UsersContainer from './Content/Users/UsersContainer';
 import { LoginAuth as Login } from './Content/Login/Login';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { initializeApp } from './redux/appReducer';
 import Preloader from './Content/Common/Preloader';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    
+const App = (props) => {
+  useEffect(() => {
+    props.initializeApp()
+  });
+
+  if (!props.initialized) {
+    return <Preloader />
   }
-  componentDidMount() {
-    this.props.initializeApp()
-  }
 
-  render() {
-    
-    if(!this.props.initialized) {
-      return <Preloader />
-    }
-    
-    const {
-      props,
-    } = this;
+  return (
 
-    return (
-      
-
-      <BrowserRouter>
-        <Provider store={this.props.store}>
-          <div className="wrapper">
-            <HeaderClass />
-            <NavAside></NavAside>
-            <div className="main-container">
-              <Route path="/profile/:userId" render={() => <ProfileCardContainer />} />
-              <Route path="/dialogs" render={() => <DialogsContainer />} />
-              <Route path="/users" render={() => <UsersContainer />} />
-              <Route path="/login" render={() => <Login />} />
-              <Route path="/news" component={News} />
-              <Route path="/music" component={Music} />
-              <Route path="/settings" component={Settings} />
-            </div>
-            <div className="mobile-footer">
-              <MobileFooter ></MobileFooter>
-            </div>
-
+    <BrowserRouter>
+      <Provider store={props.store}>
+        <div className="wrapper">
+          <HeaderClass />
+          <NavAside></NavAside>
+          <div className="main-container">
+            <Route path="/profile/:userId" render={() => <ProfileCardContainer />} />
+            <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/login" render={() => <Login />} />
+            <Route path="/news" component={News} />
+            <Route path="/music" component={Music} />
+            <Route path="/settings" component={Settings} />
           </div>
-        </Provider>
-
-      </BrowserRouter>
-    );
-  }
+          <div className="mobile-footer">
+            <MobileFooter ></MobileFooter>
+          </div>
+        </div>
+      </Provider>
+    </BrowserRouter>
+  );
 }
+
 
 const mapStateToProps = (state) => {
   return {

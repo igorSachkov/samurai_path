@@ -1,36 +1,25 @@
 import c from "./ProfilePagePost.module.css"
-import PostItem from "./PostItem/PostItem";
-const ProfilePagePost = function (props) {
 
-    // let postsArray = [
-    //     { id: 1, ava: "avatar", post: "Что ты там делаешь?", likes: 34 },
-    //     { id: 2, ava: "avatar", post: "Как дела?", likes: 5 }
-    // ]
+const PostItem = (props) => {
+    let post = props.mainProfile.posts.map((post) => {
+        return (
+            <div key={post.id}>
+                <div>{post.name}</div>
+                <div>{post.post}</div>
+            </div>
+        )
+    })
+    return (
+        <div>{post}</div>
+    )
+}
 
-    // let postsRelease = postsArray.map((post) => {
-    //     return (
-    //         <div className={c.postContainer} key={post.id}>
-    //             <div>
-    //                 {post.ava}
-    //             </div>
-    //             <div>
-    //                 {post.post}
-    //             </div>
-    //             <div>
-    //                 {post.likes}
-    //             </div>
-    //         </div>
-    //     )
-    // })
-
-
+const ProfilePagePost = (props) => {
 
     return (
         <div>
             <PostItem mainProfile={props.mainProfile} />
         </div>
-        
-
     )
 }
 

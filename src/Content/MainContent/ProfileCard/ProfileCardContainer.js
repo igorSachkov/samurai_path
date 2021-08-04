@@ -2,30 +2,25 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk } from "../../../redux/profileReducer"
-import React from "react"
+import React, { useState, useEffect } from "react"
 import ProfileCard from "./ProfileCard"
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
 import { compose } from "redux";
 
-class ProfileClass extends React.Component {
+const ProfileClass = (props) => {
 
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-        let userId = this.props.match.params.userId
-        if (!userId) userId = this.props.userId
-        this.props.getUserProfileThunk(userId)
-        this.props.getProfileStatusThunk(userId)
-    }
-    render() {
-        return (
-                <ProfileCard {...this.props} profileId={this.props.match.params.userId} />
-        )
-    }
+    useEffect(() => {
+        let userId = props.match.params.userId
+        if (!userId) userId = props.userId
+        props.getUserProfileThunk(userId)
+        props.getProfileStatusThunk(userId)
+    })
+
+    return (
+        <ProfileCard {...props} profileId={props.match.params.userId} />
+    )
 }
 const mapStateToProps = (state) => {
-
     return {
         status: state.profilePage.status,
         mainProfile: state.profilePage.mainProfile,

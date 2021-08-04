@@ -1,40 +1,32 @@
 import { connect } from "react-redux";
 import Users from "./Users"
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Preloader from "../Common/Preloader";
-import {follow, unfollow, getUsersThunkCreator, setPage, followThunk, unfollowThunk} from "../../redux/usersReducer"
-import  withAuthRedirect  from "../../HOC/withAuthRedirect";
+import { follow, unfollow, getUsersThunkCreator, setPage, followThunk, unfollowThunk } from "../../redux/usersReducer"
+import withAuthRedirect from "../../HOC/withAuthRedirect";
 import { compose } from "redux";
 
 
-class UsersClass extends React.Component {
+const UsersClass = (props) => {
 
-    constructor(props) {
-        super(props);
-        this.changePage = this.changePage.bind(this)
-    }
-    componentDidMount() {
-        if (this.props.users.length === 0)  {
-            this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+    useEffect(() => {
+        if (props.users.length === 0) {
+            props.getUsersThunkCreator(props.currentPage, props.pageSize)
         }
+    });
+    const changePage = (pageNumber) => {
+        props.getUsersThunkCreator(pageNumber, props.pageSize)
+        props.setPage(pageNumber)
     }
-    changePage(pageNumber) {
-        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
-        this.props.setPage(pageNumber)
-    }
-
-    render() {
-        
-
-        return (<div> {this.props.isFetching && <Preloader />}
-            <Users {...this.props} changePage={this.changePage} />
+    return (
+        <div> {props.isFetching && <Preloader />}
+            <Users {...props} changePage={changePage} />
         </div>
-        )
-    }
+    )
 }
 
 let mapStateToProps = (state) => {
-    
+
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,

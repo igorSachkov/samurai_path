@@ -20,7 +20,6 @@ const Users = (props) => {
         </div>
 
         {props.users.map(e => {
-            
 
             return (
                 <div key={e.id} className={c.profileContainer}>
@@ -34,8 +33,8 @@ const Users = (props) => {
                         </NavLink>
                         <div className={c.btnWrapper}>
                             {e.followed
-                                ? <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => {props.unfollowThunk(e.id)}}>unfollow</button>
-                                : <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => { props.followThunk(e.id)}}>follow</button>}
+                                ? <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => { props.unfollowThunk(e.id) }}>unfollow</button>
+                                : <button disabled={props.toggleIsFollowing.some(id => id === e.id)} onClick={() => { props.followThunk(e.id) }}>follow</button>}
                         </div>
                     </div>
                     <div className={c.profileSecondWrapper}>
@@ -46,12 +45,10 @@ const Users = (props) => {
                         <div></div>
                         <div></div>
                     </div>
-
                 </div>
             )
         })}
     </div>
-
 }
 
 export default Users

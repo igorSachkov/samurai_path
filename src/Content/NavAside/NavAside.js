@@ -1,20 +1,21 @@
-import c from "./NavAside.module.css"
+import style1 from "./NavAside.module.css"
 import NavSite from "./NavSite/NavSite";
 import { connect } from "react-redux";
-import style from "./../Common/ThemeStyle.module.css"
+import style2 from "./../Common/ThemeStyle.module.css"
 const NavAside = (props) => {
     
-    const theme = props.theme
-    // debugger
+     const stylesMap = {
+         style1,
+         style2
+     }
     return (
-        <div className={c.aside__container}>
+        <div className={`${stylesMap.style1.aside__container} ${stylesMap.style2[props.theme]}`}>
             <NavSite></NavSite>
         </div>
     )
 }
 const mapStateToProps = (state) => {
     return {
-        backgroundColor: state.settings.backgroundColor,
         theme: state.settings.theme
     }
   

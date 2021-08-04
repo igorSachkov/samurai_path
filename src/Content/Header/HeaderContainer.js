@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
     email: state.auth.email,
     userId: state.auth.id,
     state: state,
-    backgroundColor: state.settings.backgroundColor
+    theme: state.settings.theme
 })
 
 

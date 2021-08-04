@@ -1,5 +1,5 @@
 import { userApi } from "./../api/api"
-
+import { constants } from "./constants"
 
 
 let initialStore = {
@@ -16,7 +16,7 @@ let initialStore = {
 export const usersReducer = (state = initialStore, action) => {
 
     switch (action.type) {
-        case "FOLLOW":
+        case constants.usersReducer.FOLLOW:
             return {
                 ...state,
                 users: state.users.map(e => {
@@ -29,7 +29,7 @@ export const usersReducer = (state = initialStore, action) => {
                     return e
                 })
             }
-        case "UNFOLLOW":
+        case constants.usersReducer.UNFOLLOW:
             return {
                 ...state,
                 users: state.users.map(e => {
@@ -42,27 +42,28 @@ export const usersReducer = (state = initialStore, action) => {
                     return e
                 })
             }
-        case "SET-USERS":
+        case constants.usersReducer.SET_USERS:
             return {
                 ...state,
                 users: [...action.users]
             }
-        case "SET-CURRENT-PAGE":
+        case constants.usersReducer.SET_CURRENT_PAGE:
             return {
                 ...state,
                 currentPage: action.page
             }
-        case "SET-TOTAL-USERS-COUNT":
+        case constants.usersReducer.SET_TOTAL_USERS_COUNT:
+
             return {
                 ...state,
                 totalUsersCount: action.totalUsersCount
             }
-        case "SET-IS-FETCHING":
+        case constants.usersReducer.SET_IS_FETCHING:
             return {
                 ...state,
                 isFetching: action.isFetching
             }
-        case "TOGGLE-FOLLOW-UNFOLLOW":
+        case constants.usersReducer.TOGGLE_FOLLOW_UNFOLLOW:
             return {
                 ...state,
                 toggleIsFollowing: action.isFetching
@@ -73,13 +74,13 @@ export const usersReducer = (state = initialStore, action) => {
             return state
     }
 }
-export const follow = (value) => ({ type: "FOLLOW", userId: value })
-export const unfollow = (value) => ({ type: "UNFOLLOW", userId: value })
-export const setUsers = (values) => ({ type: "SET-USERS", users: values })
-export const setPage = (value) => ({ type: "SET-CURRENT-PAGE", page: value })
-export const setTotalUsersCount = (value) => ({ type: "SET-TOTAL-USERS-COUNT", totalUsersCount: value })
-export const setIsFetching = (isFetching) => ({ type: "SET-IS-FETCHING", isFetching })
-export const toggleFollowUnfollow = (isFetching, userId) => ({ type: "TOGGLE-FOLLOW-UNFOLLOW", isFetching, userId })
+export const follow = (value) => ({ type: constants.usersReducer.FOLLOW, userId: value })
+export const unfollow = (value) => ({ type: constants.usersReducer.UNFOLLOW, userId: value })
+export const setUsers = (values) => ({ type: constants.usersReducer.SET_USERS, users: values })
+export const setPage = (value) => ({ type: constants.usersReducer.SET_CURRENT_PAGE, page: value })
+export const setTotalUsersCount = (value) => ({ type: constants.usersReducer.SET_TOTAL_USERS_COUNT, totalUsersCount: value })
+export const setIsFetching = (isFetching) => ({ type: constants.usersReducer.SET_IS_FETCHING, isFetching })
+export const toggleFollowUnfollow = (isFetching, userId) => ({ type: constants.usersReducer.TOGGLE_FOLLOW_UNFOLLOW, isFetching, userId })
 
 export const getUsersThunkCreator = (currentPage, pageSize) => {
     return (dispatch) => {
@@ -101,7 +102,7 @@ export const followThunk = (userId) => {
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(follow(userId))
-                    
+
                 }
                 dispatch(toggleFollowUnfollow(false, userId))
             })

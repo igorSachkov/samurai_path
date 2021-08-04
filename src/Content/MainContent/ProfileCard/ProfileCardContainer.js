@@ -1,7 +1,7 @@
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk } from "../../../redux/profileReducer"
+import { getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk } from "../../../redux/profileReducer"
 import React, { useState, useEffect } from "react"
 import ProfileCard from "./ProfileCard"
 import withAuthRedirect from "../../../HOC/withAuthRedirect";
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        updateProfileChangeStatusTextArea, getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk
+        getUserProfileThunk, getProfileStatusThunk, updateProfileStatusThunk
     }),
     withAuthRedirect,
     withRouter

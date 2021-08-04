@@ -9,7 +9,7 @@ import {appReducer} from "./appReducer"
 
 
 
-let reducers = combineReducers({
+const reducers = combineReducers({
     profilePage: profileReducer,
     dialogPage: dialogReducer,
     usersPage: usersReducer,

@@ -1,5 +1,6 @@
 import { stopSubmit } from "redux-form"
 import { authApi } from "./../api/api"
+import { constants } from "./constants"
 
 
 let initialStore = {
@@ -14,7 +15,7 @@ let initialStore = {
 export const authReducer = (state = initialStore, action) => {
 
     switch (action.type) {
-        case "SET-USER-DATA":
+        case constants.authReducer.SET_USER_DATA:
 
             return {
                 ...state,
@@ -26,7 +27,7 @@ export const authReducer = (state = initialStore, action) => {
             return state
     }
 }
-export const setUserData = (data, isAuth) => ({ type: "SET-USER-DATA", data, isAuth })
+export const setUserData = (data, isAuth) => ({ type: constants.authReducer.SET_USER_DATA, data, isAuth })
 
 export const getAuthUserDataThunk = () => (dispatch) => {
     return authApi.me()

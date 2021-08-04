@@ -1,4 +1,6 @@
 import { profileApi } from "./../api/api"
+import { constants } from "./constants"
+
 
 ////убрать mainProfile
 let initialStore = {
@@ -21,36 +23,24 @@ let initialStore = {
 
 export const profileReducer = (state = initialStore, action) => {
     switch (action.type) {
-        case "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA":
-            return {
-                ...state,
-                mainProfile: { ...state.mainProfile, profileChangeStatusTextArea: action.text }
-            }
 
-        case "SET-USER-PROFILE":
-
+        case constants.profileReducer.SET_USER_PROFILE:
             return {
                 ...state,
                 profile: action.profile
             }
-        case "GET-PROFILE-STATUS":
-
+        case constants.profileReducer.GET_PROFILE_STATUS:
             return {
                 ...state,
                 status: action.status
             }
-        case "REFRESH-PAGE":
-            return {
-                ...state
-            }
         default:
             return state;
-
     }
 }
-export const updateProfileChangeStatusTextArea = (value) => ({ type: "UPDATE-PROFILE-CHANGE-STATUS-TEXT-AREA", text: value })
-const setUserProfile = (profile) => ({ type: "SET-USER-PROFILE", profile })
-const getProfileStatusAC = (status) => ({ type: "GET-PROFILE-STATUS", status })
+
+const setUserProfile = (profile) => ({ type: constants.profileReducer.SET_USER_PROFILE, profile })
+const getProfileStatusAC = (status) => ({ type: constants.profileReducer.GET_PROFILE_STATUS, status })
 
 export const getUserProfileThunk = (userId) => {
     return (dispatch) => {
@@ -71,8 +61,8 @@ export const getProfileStatusThunk = (userId) => {
 export const updateProfileStatusThunk = (status) => {
     return (dispatch) => {
         profileApi.updateStatus(status)
-            .then(response=> {
-                if(response.data.resultCode === 0) {
+            .then(response => {
+                if (response.data.resultCode === 0) {
                     dispatch(getProfileStatusAC(status))
                 }
             })

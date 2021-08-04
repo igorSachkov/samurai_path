@@ -1,16 +1,14 @@
-import { stopSubmit } from "redux-form"
-import { authApi } from "./../api/api"
 import {getAuthUserDataThunk} from "./authReducer"
+import { constants } from "./constants"
 
 let initialStore = {
     initialized: false
 }
 
-
 export const appReducer = (state = initialStore, action) => {
 
     switch (action.type) {
-        case "SET-INITIALIZED":
+        case constants.appReducer.SET_INITIALIZED:
 
             return {
                 ...state,
@@ -21,7 +19,7 @@ export const appReducer = (state = initialStore, action) => {
             return state
     }
 }
-export const initializedSuccess = () => ({ type: "SET-INITIALIZED"})
+export const initializedSuccess = () => ({ type: constants.appReducer.SET_INITIALIZED})
 
 export const initializeApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserDataThunk())

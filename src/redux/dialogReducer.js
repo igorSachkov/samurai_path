@@ -1,3 +1,5 @@
+import { constants } from "./constants"
+
 let initialStore = {
     dialogsArray: [
         { id: "1", avatar: "https://image.freepik.com/free-photo/handsome-young-man-pink-shirt-isolated-blue-wall-laughing_1368-55070.jpg", name: "Кирилл", status: "online" },
@@ -17,7 +19,7 @@ let initialStore = {
 
 export const dialogReducer = (state = initialStore, action) => {
     switch (action.type) {
-        case "ADD-DIALOG_MESSAGE": 
+        case constants.dialogReducer.ADD_DIALOG_MESSAGE: 
             return {
                 ...state,
                 dialogMessages: [...state.dialogMessages, {id: state.dialogMessages.length + 1, author: `Author`, message: action.message}]
@@ -27,4 +29,4 @@ export const dialogReducer = (state = initialStore, action) => {
     }
 }
 
-export const addDialogMessage = (message) => ({ type: "ADD-DIALOG_MESSAGE", message })
+export const addDialogMessage = (message) => ({ type: constants.dialogReducer.ADD_DIALOG_MESSAGE, message })

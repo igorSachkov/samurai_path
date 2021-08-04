@@ -1,12 +1,12 @@
 import c from "./Dialogs.module.css"
-import DialogsSideBar from "./DialogsSideBar/DialogsSideBar"
+import DialogSideBar from "./DialogSideBar/DialogSideBar"
 import DialogForm from "./DialogForm/DialogForm"
 import DialogItem from "./DialogItem/DialogItem"
 import PropTypes from 'prop-types'
 
 
 
-const Dialogs = function (props) {
+const Dialogs = (props) => {
     const addMessage = (object) => {
         props.addDialogMessage(object.message)
     }
@@ -17,13 +17,11 @@ const Dialogs = function (props) {
                 <div className={c.messages}>
                     <DialogItem dialogs={props.dialogs} />
                 </div>
-                <DialogForm onSubmit={addMessage}/>
-
+                <DialogForm onSubmit={addMessage} />
             </div>
             <div className={c.dialogSideBar}>
-                <DialogsSideBar asideContacts={props.asideContacts}></DialogsSideBar>
+                <DialogSideBar asideContacts={props.asideContacts}></DialogSideBar>
             </div>
-            
         </div>
 
     )

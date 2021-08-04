@@ -9,8 +9,20 @@ li {
 .wrapper {
   width: 100%;
   height: 1200px;
-  background-image: url("/src/Content/Images/background.jpg");
+  
   background-position: center;
+}
+.lightTheme {
+  background-image: url("/src/Content/Images/lightTheme.jpg");
+}
+.darkTheme {
+  background-image: url("/src/Content/Images/darkTheme.jpg");
+}
+.blueTheme {
+  background-image: url("/src/Content/Images/blueTheme.jpg");
+}
+.greenTheme {
+  background-image: url("/src/Content/Images/greenTheme.jpg");
 }
 .main-container {
   padding-top: 72px;  

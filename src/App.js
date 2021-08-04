@@ -1,5 +1,5 @@
 import './App.css'
-import HeaderClass from "./Content/Header/HeaderClass"
+import HeaderContainer from "./Content/Header/HeaderContainer"
 import NavAside from './Content/NavAside/NavAside';
 import ProfileCardContainer from './Content/MainContent/ProfileCard/ProfileCardContainer';
 import DialogsContainer from './Content/MainContent/Dialogs/DialogsContainer';
@@ -16,6 +16,7 @@ import { initializeApp } from './redux/appReducer';
 import Preloader from './Content/Common/Preloader';
 
 const App = (props) => {
+
   useEffect(() => {
     props.initializeApp()
   });
@@ -28,8 +29,8 @@ const App = (props) => {
 
     <BrowserRouter>
       <Provider store={props.store}>
-        <div className="wrapper">
-          <HeaderClass />
+        <div className={`wrapper ${props.theme}`}>
+          <HeaderContainer />
           <NavAside></NavAside>
           <div className="main-container">
             <Route path="/profile/:userId" render={() => <ProfileCardContainer />} />
@@ -51,8 +52,10 @@ const App = (props) => {
 
 
 const mapStateToProps = (state) => {
+  
   return {
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    theme: state.settings.theme
   }
 
 }

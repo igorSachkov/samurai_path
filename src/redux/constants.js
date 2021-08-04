@@ -20,6 +20,10 @@ export const constants = {
         SET_TOTAL_USERS_COUNT: `SET-TOTAL-USERS-COUNT`,
         SET_IS_FETCHING: `SET-IS-FETCHING`,
         TOGGLE_FOLLOW_UNFOLLOW: `TOGGLE-FOLLOW-UNFOLLOW`
+    },
+    settingsReducer: {
+        SET_STYLE: `SET-STYLE`,
+        SET_BACKGROUND: `SET-BACKGROUND`
     }
 }
 

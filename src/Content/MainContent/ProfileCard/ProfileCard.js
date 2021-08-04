@@ -6,7 +6,7 @@ import Preloader from "./../../Common/Preloader"
 import ProfileStatusWithHooks from "./ProfileMain/ProfileStatusWithHooks";
 
 const ProfileCard = function (props) {
-
+    
     if(!props.profile) {
         return <Preloader />
     }

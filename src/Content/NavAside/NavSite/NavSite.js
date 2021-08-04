@@ -1,7 +1,7 @@
 import c from "./NavSite.module.css"
 import { NavLink } from "react-router-dom";
 
-const NavSite = function() {
+const NavSite = () => {
     return (
         <ul>
             <li>

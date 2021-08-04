@@ -1,10 +1,10 @@
 import Logo from "./Logo/Logo"
 import MenuArea from "./MenuArea/MenuArea"
 import c from "./Header.module.css"
-const Header = function(props) {
+const Header = (props)=> {
     
     return (
-        <div className={c.container}>
+        <div className={c.container} style={{backgroundColor: props.backgroundColor}}>
             <div className={c.header__wrapper}>
                 <Logo></Logo>
                 <MenuArea {...props}></MenuArea>

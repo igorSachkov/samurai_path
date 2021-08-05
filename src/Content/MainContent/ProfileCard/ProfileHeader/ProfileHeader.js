@@ -1,8 +1,10 @@
 import c from "./ProfileHeader.module.css"
 import userDefault from "./../../../Images/userDefault.jpg"
 import React from "react"
-const ProfileHeader = (props) => {
 
+
+const ProfileHeader = (props) => {
+    
     return (
         <div>
             <div className={c.background}>
@@ -20,5 +22,9 @@ const ProfileHeader = (props) => {
         </div>
     )
 }
-
-export default ProfileHeader;
+const areEqual = (prevProps, nextProps) => {
+    let result = prevProps.profile === nextProps.profile
+    
+   return result
+}
+export default React.memo(ProfileHeader, areEqual);

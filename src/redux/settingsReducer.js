@@ -19,3 +19,4 @@ export const settingsReducer = (state = initialStore, action) => {
 }
 
 export const setStyle = (style) => ({ type: constants.settingsReducer.SET_STYLE, style})
+

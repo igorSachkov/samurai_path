@@ -8,7 +8,6 @@ import { reducer as formReducer} from "redux-form"
 import {appReducer} from "./appReducer"
 import { settingsReducer } from "./settingsReducer";
 
-
 const reducers = combineReducers({
     profilePage: profileReducer,
     dialogPage: dialogReducer,
@@ -19,9 +18,8 @@ const reducers = combineReducers({
     settings: settingsReducer
 })
 
-
-
 let store = createStore(reducers, applyMiddleware(thunkMiddleware))
+
 window.state = store
 
 export default store;

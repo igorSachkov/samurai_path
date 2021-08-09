@@ -30,7 +30,6 @@ const Settings = (props) => {
     const changeStyle = (style) => {
         props.setStyle(style.setStyle)
 
-        console.log(style)
     }
     return (
         <div>

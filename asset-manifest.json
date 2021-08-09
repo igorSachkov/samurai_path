@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/samurai_path/static/css/main.80f7f02a.chunk.css",
+    "main.js": "/samurai_path/static/js/main.58e08f2a.chunk.js",
+    "main.js.map": "/samurai_path/static/js/main.58e08f2a.chunk.js.map",
+    "runtime-main.js": "/samurai_path/static/js/runtime-main.39fa9814.js",
+    "runtime-main.js.map": "/samurai_path/static/js/runtime-main.39fa9814.js.map",
+    "static/js/2.6c49dbe4.chunk.js": "/samurai_path/static/js/2.6c49dbe4.chunk.js",
+    "static/js/2.6c49dbe4.chunk.js.map": "/samurai_path/static/js/2.6c49dbe4.chunk.js.map",
+    "index.html": "/samurai_path/index.html",
+    "static/css/main.80f7f02a.chunk.css.map": "/samurai_path/static/css/main.80f7f02a.chunk.css.map",
+    "static/js/2.6c49dbe4.chunk.js.LICENSE.txt": "/samurai_path/static/js/2.6c49dbe4.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/samurai_path/static/media/lightTheme.17e61dc9.jpg",
+    "static/media/Settings.module.css": "/samurai_path/static/media/profile-background.b5105527.jpg",
+    "static/media/social-logo.3ca094d7.png": "/samurai_path/static/media/social-logo.3ca094d7.png",
+    "static/media/userDefault.9d5adc75.jpg": "/samurai_path/static/media/userDefault.9d5adc75.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.39fa9814.js",
+    "static/js/2.6c49dbe4.chunk.js",
+    "static/css/main.80f7f02a.chunk.css",
+    "static/js/main.58e08f2a.chunk.js"
+  ]
+}

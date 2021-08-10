@@ -83,40 +83,34 @@ export const setIsFetching = (isFetching) => ({ type: constants.usersReducer.SET
 export const toggleFollowUnfollow = (isFetching, userId) => ({ type: constants.usersReducer.TOGGLE_FOLLOW_UNFOLLOW, isFetching, userId })
 
 export const getUsersThunkCreator = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(setIsFetching(true))
-        userApi.getUsers(currentPage, pageSize)
-            .then(data => {
+        let data = await userApi.getUsers(currentPage, pageSize)
                 dispatch(setIsFetching(false))
                 dispatch(setUsers(data.items))
                 dispatch(setTotalUsersCount(data.totalCount))
-            })
     }
 }
 
 export const followThunk = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowUnfollow(true, userId))
-        userApi.follow(userId)
-            .then(response => {
+        let response = await userApi.follow(userId)
                 if (response.data.resultCode === 0) {
                     dispatch(follow(userId))
-
                 }
                 dispatch(toggleFollowUnfollow(false, userId))
-            })
+            
     }
 }
 export const unfollowThunk = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowUnfollow(true, userId))
-        userApi.unfollow(userId)
-            .then(response => {
+        let response = await userApi.unfollow(userId)
                 if (response.data.resultCode === 0) {
                     dispatch(unfollow(userId))
                 }
                 dispatch(toggleFollowUnfollow(false, userId))
-            })
     }
 }

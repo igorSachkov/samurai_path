@@ -27,7 +27,7 @@ const App = (props) => {
 
   return (
 
-    <BrowserRouter>
+    
       <Provider store={props.store}>
         <div className={`wrapper ${props.theme}`}>
           <HeaderContainer />
@@ -46,7 +46,7 @@ const App = (props) => {
           </div>
         </div>
       </Provider>
-    </BrowserRouter>
+    
   );
 }
 

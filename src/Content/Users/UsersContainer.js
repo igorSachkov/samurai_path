@@ -33,7 +33,8 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        toggleIsFollowing: state.usersPage.toggleIsFollowing
+        toggleIsFollowing: state.usersPage.toggleIsFollowing,
+        portionSize: state.usersPage.portionSize
     }
 }
 

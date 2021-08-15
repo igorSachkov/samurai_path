@@ -2,22 +2,12 @@
 import c from "./Users.module.css"
 import userDefaultAvatar from "../Images/userDefault.jpg"
 import { NavLink } from "react-router-dom"
+import { Pagenator } from "../Common/Pagenator"
 const Users = (props) => {
 
-    let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
-    let pages = []
-    
-    for (let i = 1; i <= pageCount; i++) {
-        pages.push(i)
-    }
     return <div>
-        <div className={c.pagesCount}>
-            {pages.map((e, i) => {
-
-                return <div className={props.currentPage === e && c.active} onClick={() => props.changePage(e)} key={i}>{e}</div>
-            })}
-        </div>
+        <Pagenator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} changePage={props.changePage} portionSize={props.portionSize}/>
 
         {props.users.map(e => {
 

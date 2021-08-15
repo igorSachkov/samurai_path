@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import store from "./redux/reduxStore";
 import './index.css';
-
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <App store={store} />,
+  <BrowserRouter>
+    <App store={store} />
+  </BrowserRouter>,
   document.getElementById('root')
 );

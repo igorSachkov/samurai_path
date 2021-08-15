@@ -5,6 +5,7 @@ import { constants } from "./constants"
 let initialStore = {
     users: [],
     pageSize: 5,
+    portionSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,

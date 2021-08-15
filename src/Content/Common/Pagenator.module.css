@@ -1,0 +1,10 @@
+.pagesCount {
+    display: flex;
+}
+.pagesCount div{
+    margin-left: 3px;
+    cursor: pointer;
+}
+.active {
+    font-weight: bold;
+}
